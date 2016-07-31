@@ -1,5 +1,5 @@
 # NeatEngine
-My 2D Game Engine using c++
+Basic 2D Game Engine using c++
 
 Todo:
 
