@@ -1,5 +1,6 @@
 #include "SplashScreen.h"
 #include "Game.h"
+#include "InputManager.h"
 
 void SplashScreen::Initialise()
 {
@@ -21,7 +22,9 @@ void SplashScreen::Initialise()
 
 void SplashScreen::Update(float deltaTime)
 {
-  std::vector<sf::Event> events = Game::instance.PollEvents();
+  InputManager *pInputManager = InputManager::pInstance;
+
+  std::vector<sf::Event> events = pInputManager->GetEvents();
   
   for (int i = 0; i < events.size(); i++)
   {

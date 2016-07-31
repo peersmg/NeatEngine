@@ -16,15 +16,12 @@ public:
   static Game instance;
   void Start();
   sf::RenderWindow &GetWindow();
-  std::vector<sf::Event> PollEvents();
   void SetState(GameState newState);
   ObjectManager m_objects;
 
 private:
   bool IsExiting();
   void GameLoop();
-
-  std::vector<sf::Event> _events;
   GameState _gameState;
   GameState _prevGameState;
   sf::RenderWindow _mainWindow;

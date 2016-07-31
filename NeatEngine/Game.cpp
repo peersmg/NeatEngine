@@ -1,5 +1,5 @@
 #include "Game.h"
-
+#include "InputManager.h"
 
 void Game::Start()
 {
@@ -48,21 +48,11 @@ bool Game::IsExiting()
 
 void Game::GameLoop()
 {
-  sf::Event currentEvent;
 
   if (!IsExiting())
   {
     // Clear to grey
     _mainWindow.clear(sf::Color(100, 100, 100));
-
-    // Clear events
-    _events.clear();
-
-    //Add events to array
-    while (_mainWindow.pollEvent(currentEvent))
-    {
-      _events.push_back(currentEvent);
-    }
 
     //// GAME STUFF HERE ////
 
@@ -101,7 +91,10 @@ void Game::GameLoop()
 
     ////
 
-    // Draw and update  GameObjects here
+    // Update the inputs
+    InputManager::pInstance->Update();
+
+    // Draw and update GameObjects here
 
     m_objects.UpdateAll();
     m_objects.DrawAll();
@@ -111,17 +104,6 @@ void Game::GameLoop()
     //
 
     _mainWindow.display();
-
-    // Exit the game and close the window if the x button is pressed
-    
-    for (int i = 0; i < _events.size(); i++)
-    {
-      // Request for closing the window
-      if (currentEvent.type == sf::Event::Closed)
-        _gameState = GameState::Exiting;
-    }
-    
-    
   }
 }
 
@@ -130,9 +112,6 @@ void Game::SetState(GameState newState)
   _gameState = newState;
 }
 
-std::vector<sf::Event> Game::PollEvents()
-{
-  return _events;
-}
+
 
 Game Game::instance;
