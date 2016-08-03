@@ -92,7 +92,7 @@ void Game::GameLoop()
     ////
 
     // Update the inputs
-    InputManager::pInstance->Update();
+    InputManager::GetInstance()->Update();
 
     // Draw and update GameObjects here
 

@@ -57,9 +57,14 @@ bool InputManager::MouseOver(sf::Vector2f position, sf::Vector2f size)
   }
 }
 
+InputManager* InputManager::GetInstance()
+{
+  return m_pInstance;
+}
+
 std::vector<sf::Event> InputManager::GetEvents()
 {
   return m_events;
 }
 
-InputManager *InputManager::pInstance = new InputManager;
+InputManager *InputManager::m_pInstance = new InputManager;

@@ -22,7 +22,7 @@ void SplashScreen::Initialise()
 
 void SplashScreen::Update(float deltaTime)
 {
-  InputManager *pInputManager = InputManager::pInstance;
+  InputManager *pInputManager = InputManager::GetInstance();
 
   std::vector<sf::Event> events = pInputManager->GetEvents();
   
