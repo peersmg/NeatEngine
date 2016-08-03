@@ -43,11 +43,11 @@ sf::Vector2i InputManager::GetMousePosition()
   return m_mousePosition;
 }
 
-bool InputManager::MouseOver(sf::Vector2f position, sf::Vector2f size)
+bool InputManager::MouseOver(rect Rect)
 {
 
-  if (m_mousePosition.x <= position.x + size.x && m_mousePosition.x >= position.x &&
-    m_mousePosition.y <= position.y + size.y && m_mousePosition.y >= position.y)
+  if (m_mousePosition.x <= Rect.x + Rect.w && m_mousePosition.x >= Rect.x &&
+    m_mousePosition.y <= Rect.y + Rect.h && m_mousePosition.y >= Rect.y)
   {
     return true;
   }

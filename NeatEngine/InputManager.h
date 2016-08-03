@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+#include "DataTypes.h"
 
 class InputManager
 {
@@ -17,7 +18,7 @@ public:
   static InputManager* GetInstance();
 
   std::vector<sf::Event> GetEvents();
-  bool MouseOver(sf::Vector2f position, sf::Vector2f size);
+  bool MouseOver(rect Rect);
   sf::Vector2i GetMousePosition();
 
 };

@@ -1,6 +1,7 @@
 #include "SplashScreen.h"
 #include "Game.h"
 #include "InputManager.h"
+#include "DrawManager.h"
 
 void SplashScreen::Initialise()
 {
@@ -41,6 +42,8 @@ void SplashScreen::Update(float deltaTime)
 
 void SplashScreen::Draw()
 {
+  DrawManager *pDrawManager = DrawManager::GetInstance();
+
   if (imageLoaded)
   {
     Game::instance.GetWindow().draw(splashSprite);
