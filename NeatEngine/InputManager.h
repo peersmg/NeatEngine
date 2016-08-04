@@ -6,6 +6,7 @@ class InputManager
 {
 private:
   std::vector<sf::Event> m_events;
+  std::vector<sf::Event> m_prevEvents;
   sf::Vector2i m_mousePosition;
   static InputManager *m_pInstance;
 
@@ -18,8 +19,9 @@ public:
   static InputManager* GetInstance();
 
   std::vector<sf::Event> GetEvents();
-  bool MouseOver(rect Rect);
   sf::Vector2i GetMousePosition();
 
+  bool MouseOver(rect Rect);
+  bool KeyDown(sf::Keyboard::Key Key);
+  bool KeyUp(sf::Keyboard::Key Key);
 };
-

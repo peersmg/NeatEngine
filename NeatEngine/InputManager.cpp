@@ -24,30 +24,33 @@ void InputManager::Update()
     m_events.push_back(currentEvent);
   }
 
-  for (int i = 0; i < m_events.size(); i++)
+  for (unsigned int i = 0; i < m_events.size(); i++)
   {
     // Request for closing the window
     if (m_events[i].type == sf::Event::Closed)
       Game::instance.SetState(Game::GameState::Exiting);
   }
 
-  // get the current mouse position in the window
-  sf::Vector2i pixelPos = sf::Mouse::getPosition(Game::instance.GetWindow());
+  m_mousePosition = GetMousePosition();
 
-  // convert it to world coordinates and set it
-  m_mousePosition = (sf::Vector2i)Game::instance.GetWindow().mapPixelToCoords(pixelPos);
+  m_prevEvents = m_events;
 }
 
 sf::Vector2i InputManager::GetMousePosition()
 {
-  return m_mousePosition;
+  // get the current mouse position in the window
+  sf::Vector2i pixelPos = sf::Mouse::getPosition(Game::instance.GetWindow());
+
+  // convert it to world coordinates and set it
+  return (sf::Vector2i)Game::instance.GetWindow().mapPixelToCoords(pixelPos);
 }
 
 bool InputManager::MouseOver(rect Rect)
 {
+  sf::Vector2i mousePos = GetMousePosition();
 
-  if (m_mousePosition.x <= Rect.x + Rect.w && m_mousePosition.x >= Rect.x &&
-    m_mousePosition.y <= Rect.y + Rect.h && m_mousePosition.y >= Rect.y)
+  if (mousePos.x <= Rect.x + Rect.w && mousePos.x >= Rect.x &&
+    mousePos.y <= Rect.y + Rect.h && mousePos.y >= Rect.y)
   {
     return true;
   }
@@ -55,6 +58,32 @@ bool InputManager::MouseOver(rect Rect)
   {
     return false;
   }
+}
+
+bool InputManager::KeyDown(sf::Keyboard::Key Key)
+{
+  for (unsigned int i = 0; i < m_events.size(); i++)
+  {
+    if (m_events[i].type == sf::Event::KeyPressed && m_events[i].key.code == Key)
+    {
+      return true;
+    }
+  }
+  
+  return false;
+}
+
+bool InputManager::KeyUp(sf::Keyboard::Key Key)
+{
+  for (unsigned  int i = 0; i < m_events.size(); i++)
+  {
+    if (m_events[i].type == sf::Event::KeyReleased && m_events[i].key.code == Key)
+    {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 InputManager* InputManager::GetInstance()

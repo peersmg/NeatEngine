@@ -38,6 +38,12 @@ void SplashScreen::Update(float deltaTime)
       m_active = false;
     }
   }
+
+  if (pInputManager->MouseOver(rect(0, 0, 50, 50)) && pInputManager->KeyDown(sf::Keyboard::Space))
+  {
+    std::cout << "Message: Box selected\n";
+  }
+
 }
 
 void SplashScreen::Draw()

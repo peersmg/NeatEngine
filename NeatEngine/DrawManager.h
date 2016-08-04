@@ -13,6 +13,6 @@ public:
 
   static DrawManager* GetInstance();
 
-  void BasicRect(rect Rect);
+  void BasicRect(rect Rect, sf::Color color);
 };
 

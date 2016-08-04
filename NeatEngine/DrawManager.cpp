@@ -17,7 +17,7 @@ DrawManager* DrawManager::GetInstance()
   return m_pDrawManager;
 }
 
-void DrawManager::BasicRect(rect Rect)
+void DrawManager::BasicRect(rect Rect, sf::Color color)
 {
   sf::RectangleShape rectangle;
 
