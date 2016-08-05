@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "DrawManager.h"
 #include "Game.h"
 
@@ -12,9 +11,14 @@ DrawManager::~DrawManager()
 {
 }
 
+void DrawManager::Initialise()
+{
+  m_defaultFont.loadFromFile("fonts/SquaresBold.otf");
+}
+
 DrawManager* DrawManager::GetInstance()
 {
-  return m_pDrawManager;
+  return m_pInstance;
 }
 
 void DrawManager::BasicRect(rect Rect, sf::Color color)
@@ -29,4 +33,17 @@ void DrawManager::BasicRect(rect Rect, sf::Color color)
   Game::instance.GetWindow().draw(rectangle);
 }
 
-DrawManager *DrawManager::m_pDrawManager = new DrawManager;
+void DrawManager::DrawText(std::string Text, int fontSize, sf::Color Color)
+{
+  
+  // Create text
+  sf::Text text(Text, m_defaultFont);
+  text.setCharacterSize(fontSize);
+  text.setColor(Color);
+  text.setPosition(sf::Vector2f(0.0, 0.0));
+
+  // Draw it
+  Game::instance.GetWindow().draw(text);
+}
+
+DrawManager *DrawManager::m_pInstance = new DrawManager;

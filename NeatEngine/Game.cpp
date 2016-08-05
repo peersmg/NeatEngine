@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "InputManager.h"
+#include "DrawManager.h"
 
 void Game::Start()
 {
@@ -11,7 +12,10 @@ void Game::Start()
   std::cout << "Message: Starting..." << std::endl;
 
   _mainWindow.create(sf::VideoMode(1024, 768, 32), "Pang");
-  _gameState = GameState::Playing;
+  _gameState = GameState::ShowingSplash;
+
+  //Initialise DrawManager
+  DrawManager::GetInstance()->Initialise();
 
   //Start code here
   SplashScreen *mainSplash = new SplashScreen;

@@ -27,7 +27,7 @@ void SplashScreen::Update(float deltaTime)
 
   std::vector<sf::Event> events = pInputManager->GetEvents();
   
-  for (int i = 0; i < events.size(); i++)
+  for (unsigned int i = 0; i < events.size(); i++)
   {
     if (events[i].type == sf::Event::EventType::KeyPressed || events[i].type == sf::Event::EventType::MouseButtonPressed || events[i].type == sf::Event::EventType::Closed)
     {
@@ -48,8 +48,6 @@ void SplashScreen::Update(float deltaTime)
 
 void SplashScreen::Draw()
 {
-  DrawManager *pDrawManager = DrawManager::GetInstance();
-
   if (imageLoaded)
   {
     Game::instance.GetWindow().draw(splashSprite);
