@@ -2,12 +2,12 @@
 
 struct rect
 {
-  int x;
-  int y;
-  int w;
-  int h;
+  float x;
+  float y;
+  float w;
+  float h;
 
-  rect(int m_x, int m_y, int m_w, int m_h)
+  rect(float m_x, float m_y, float m_w, float m_h)
   {
     x = m_x;
     y = m_y;

@@ -11,7 +11,7 @@ void Game::Start()
 
   std::cout << "Message: Starting..." << std::endl;
 
-  _mainWindow.create(sf::VideoMode(1024, 768, 32), "Pang");
+  _mainWindow.create(sf::VideoMode(1024, 768, 32), "Pang", sf::Style::Titlebar | sf::Style::Close);
   _gameState = GameState::ShowingSplash;
 
   //Initialise DrawManager

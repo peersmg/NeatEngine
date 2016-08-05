@@ -19,6 +19,6 @@ public:
   void Initialise();
 
   void BasicRect(rect Rect, sf::Color color);
-  void DrawText(std::string Text, int fontSize, sf::Color Color = sf::Color::White);
+  void DrawText(std::string Text, int fontSize, sf::Vector2f Position,sf::Color Color = sf::Color::White);
 };
 

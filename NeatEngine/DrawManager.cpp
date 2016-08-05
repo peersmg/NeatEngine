@@ -33,14 +33,14 @@ void DrawManager::BasicRect(rect Rect, sf::Color color)
   Game::instance.GetWindow().draw(rectangle);
 }
 
-void DrawManager::DrawText(std::string Text, int fontSize, sf::Color Color)
+void DrawManager::DrawText(std::string Text, int fontSize, sf::Vector2f Position, sf::Color Color)
 {
   
   // Create text
   sf::Text text(Text, m_defaultFont);
   text.setCharacterSize(fontSize);
   text.setColor(Color);
-  text.setPosition(sf::Vector2f(0.0, 0.0));
+  text.setPosition(Position);
 
   // Draw it
   Game::instance.GetWindow().draw(text);
