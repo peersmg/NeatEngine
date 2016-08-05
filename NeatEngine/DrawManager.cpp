@@ -28,7 +28,7 @@ void DrawManager::BasicRect(rect Rect, sf::Color color)
   rectangle.setSize(sf::Vector2f(Rect.w, Rect.h));
   rectangle.setPosition(Rect.x, Rect.y);
   rectangle.setOutlineThickness(0);
-  rectangle.setFillColor(sf::Color::Blue);
+  rectangle.setFillColor(color);
   
   Game::instance.GetWindow().draw(rectangle);
 }
@@ -40,7 +40,8 @@ void DrawManager::DrawText(std::string Text, int fontSize, sf::Vector2f Position
   sf::Text text(Text, m_defaultFont);
   text.setCharacterSize(fontSize);
   text.setColor(Color);
-  text.setPosition(Position);
+
+  text.setPosition(sf::Vector2f(Position.x - text.getLocalBounds().width / 2, Position.y - text.getLocalBounds().height / 2));
 
   // Draw it
   Game::instance.GetWindow().draw(text);
