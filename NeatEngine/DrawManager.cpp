@@ -33,7 +33,7 @@ void DrawManager::BasicRect(rect Rect, sf::Color color)
   Game::instance.GetWindow().draw(rectangle);
 }
 
-void DrawManager::DrawText(std::string Text, int fontSize, sf::Vector2f Position, sf::Color Color)
+void DrawManager::DrawText(std::string Text, int fontSize, sf::Vector2f Position, sf::Color Color, alignment Alignment)
 {
   
   // Create text
@@ -41,7 +41,38 @@ void DrawManager::DrawText(std::string Text, int fontSize, sf::Vector2f Position
   text.setCharacterSize(fontSize);
   text.setColor(Color);
 
-  text.setPosition(sf::Vector2f(Position.x - text.getLocalBounds().width / 2, Position.y - text.getLocalBounds().height / 2));
+  switch (Alignment)
+  {
+  case alignment::TOPLEFT:
+    text.setPosition(sf::Vector2f(Position.x, Position.y));
+    break;
+  case alignment::TOPRIGHT:
+    text.setPosition(sf::Vector2f(Position.x - text.getLocalBounds().width, Position.y));
+    break;
+  case alignment::TOPCENTER:
+    text.setPosition(sf::Vector2f(Position.x - (text.getLocalBounds().width/2), Position.y));
+    break;
+  case alignment::MIDDLELEFT:
+    text.setPosition(sf::Vector2f(Position.x, Position.y - (text.getLocalBounds().height / 2)));
+    break;
+  case alignment::MIDDLERIGHT:
+    text.setPosition(sf::Vector2f(Position.x - text.getLocalBounds().width, Position.y - (text.getLocalBounds().height / 2)));
+    break;
+  case alignment::MIDDLECENTER:
+    text.setPosition(sf::Vector2f(Position.x - text.getLocalBounds().width / 2, Position.y - (text.getLocalBounds().height / 2)));
+    break;
+  case alignment::BOTTOMLEFT:
+    text.setPosition(sf::Vector2f(Position.x, Position.y - (text.getLocalBounds().height)));
+    break;
+  case alignment::BOTTOMRIGHT:
+    text.setPosition(sf::Vector2f(Position.x - text.getLocalBounds().width, Position.y - (text.getLocalBounds().height)));
+    break;
+  case alignment::BOTTOMCENTER:
+    text.setPosition(sf::Vector2f(Position.x - (text.getLocalBounds().width / 2), Position.y - (text.getLocalBounds().height)));
+    break;
+  default:
+    break;
+  }
 
   // Draw it
   Game::instance.GetWindow().draw(text);
