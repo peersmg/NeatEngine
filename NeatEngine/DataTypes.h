@@ -1,5 +1,5 @@
 #pragma once
-
+/*
 struct rect
 {
   float x;
@@ -16,5 +16,5 @@ struct rect
   }
 
 };
-
+*/
 enum class alignment { TOPLEFT, TOPRIGHT, TOPCENTER, MIDDLELEFT, MIDDLERIGHT, MIDDLECENTER, BOTTOMLEFT, BOTTOMRIGHT, BOTTOMCENTER };

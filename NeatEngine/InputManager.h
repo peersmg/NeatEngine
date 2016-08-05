@@ -21,7 +21,7 @@ public:
   std::vector<sf::Event> GetEvents();
   sf::Vector2i GetMousePosition();
 
-  bool MouseOver(rect Rect);
+  bool MouseOver(sf::FloatRect Rect);
   bool KeyDown(sf::Keyboard::Key Key);
   bool KeyUp(sf::Keyboard::Key Key);
 };

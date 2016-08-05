@@ -18,7 +18,7 @@ public:
 
   void Initialise();
 
-  void BasicRect(rect Rect, sf::Color color);
-  void DrawText(std::string Text, int fontSize, sf::Vector2f Position, sf::Color Color = sf::Color::White, alignment Alignment = alignment::TOPLEFT);
+  void BasicRect(sf::FloatRect Rect, sf::Color color);
+  sf::FloatRect DrawText(std::string Text, int fontSize, sf::Vector2f Position, sf::Color Color = sf::Color::White, alignment Alignment = alignment::TOPLEFT);
 };
 

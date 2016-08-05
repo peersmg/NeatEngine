@@ -45,12 +45,12 @@ sf::Vector2i InputManager::GetMousePosition()
   return (sf::Vector2i)Game::instance.GetWindow().mapPixelToCoords(pixelPos);
 }
 
-bool InputManager::MouseOver(rect Rect)
+bool InputManager::MouseOver(sf::FloatRect Rect)
 {
   sf::Vector2i mousePos = GetMousePosition();
 
-  if (mousePos.x <= Rect.x + Rect.w && mousePos.x >= Rect.x &&
-    mousePos.y <= Rect.y + Rect.h && mousePos.y >= Rect.y)
+  if (mousePos.x <= Rect.left + Rect.width && mousePos.x >= Rect.left &&
+    mousePos.y <= Rect.top + Rect.height && mousePos.y >= Rect.top)
   {
     return true;
   }

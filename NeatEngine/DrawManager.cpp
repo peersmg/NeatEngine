@@ -21,19 +21,19 @@ DrawManager* DrawManager::GetInstance()
   return m_pInstance;
 }
 
-void DrawManager::BasicRect(rect Rect, sf::Color color)
+void DrawManager::BasicRect(sf::FloatRect Rect, sf::Color color)
 {
   sf::RectangleShape rectangle;
 
-  rectangle.setSize(sf::Vector2f(Rect.w, Rect.h));
-  rectangle.setPosition(Rect.x, Rect.y);
+  rectangle.setSize(sf::Vector2f(Rect.width, Rect.height));
+  rectangle.setPosition(Rect.left, Rect.top);
   rectangle.setOutlineThickness(0);
   rectangle.setFillColor(color);
   
   Game::instance.GetWindow().draw(rectangle);
 }
 
-void DrawManager::DrawText(std::string Text, int fontSize, sf::Vector2f Position, sf::Color Color, alignment Alignment)
+sf::FloatRect DrawManager::DrawText(std::string Text, int fontSize, sf::Vector2f Position, sf::Color Color, alignment Alignment)
 {
   
   // Create text
@@ -76,6 +76,9 @@ void DrawManager::DrawText(std::string Text, int fontSize, sf::Vector2f Position
 
   // Draw it
   Game::instance.GetWindow().draw(text);
+
+  // Return text bounds
+  return text.getGlobalBounds();
 }
 
 DrawManager *DrawManager::m_pInstance = new DrawManager;
