@@ -62,15 +62,7 @@ bool InputManager::MouseOver(sf::FloatRect Rect)
 
 bool InputManager::KeyDown(sf::Keyboard::Key Key)
 {
-  for (unsigned int i = 0; i < m_events.size(); i++)
-  {
-    if (m_events[i].type == sf::Event::KeyPressed && m_events[i].key.code == Key)
-    {
-      return true;
-    }
-  }
-  
-  return false;
+  return sf::Keyboard::isKeyPressed(Key);
 }
 
 bool InputManager::KeyUp(sf::Keyboard::Key Key)
