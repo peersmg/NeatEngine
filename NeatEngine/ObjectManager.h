@@ -4,7 +4,7 @@
 class ObjectManager
 {
 private:
-  std::list<GameObject*> m_allObjects;
+  std::list<GameObject*> m_allObjects;  // Main list of gameobjects
 
 public:
   ObjectManager();
@@ -15,9 +15,6 @@ public:
 
   // Delete all GameObjects with m_active set to false
   void DeleteInactiveObjects();
-
-  // Delete all GameObjects
-  void DeleteAllObjects();
 
   // Update all GameObjects
   void UpdateAll();

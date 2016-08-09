@@ -8,7 +8,6 @@ class GameObject
 
 protected:
   sf::Vector2f m_position;
-  int m_drawdepth;
   bool m_active;
 
 public:
