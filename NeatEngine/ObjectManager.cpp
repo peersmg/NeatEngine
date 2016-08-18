@@ -55,8 +55,7 @@ void ObjectManager::UpdateAll()
 {
   auto it = m_allObjects.begin();
 
-  sf::Clock deltaClock;
-  sf::Time deltaTime = deltaClock.getElapsedTime();
+  sf::Time deltaTime = m_deltaClock.restart();
 
   // Iterate through all the objects and update them
   for (; it != m_allObjects.end(); ++it)
@@ -66,6 +65,4 @@ void ObjectManager::UpdateAll()
       (*it)->Update(deltaTime.asSeconds());
     }
   }
-
-  deltaClock.restart();
 }

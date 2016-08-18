@@ -4,7 +4,9 @@
 class ObjectManager
 {
 private:
-  std::vector<GameObject*> m_allObjects;  // Main list of gameobjects
+  std::list<GameObject*> m_allObjects;  // Main list of gameobjects
+
+  sf::Clock m_deltaClock;
 
 public:
   ObjectManager();
