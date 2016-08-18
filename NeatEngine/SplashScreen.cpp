@@ -10,7 +10,6 @@ void SplashScreen::Initialise()
 
   if (splashImage.loadFromFile("images/Splashscreen.png"))
   {
-
     splashSprite.setTexture(splashImage);
     imageLoaded = true;
     std::cout << "Message: SplashScreen image loaded." << std::endl;
@@ -27,6 +26,7 @@ void SplashScreen::Update(float deltaTime)
 
   std::vector<sf::Event> events = pInputManager->GetEvents();
   
+  // Close the splash screen if any key has been pressed
   for (unsigned int i = 0; i < events.size(); i++)
   {
     if (events[i].type == sf::Event::EventType::KeyPressed || events[i].type == sf::Event::EventType::MouseButtonPressed || events[i].type == sf::Event::EventType::Closed)
@@ -38,12 +38,6 @@ void SplashScreen::Update(float deltaTime)
       m_active = false;
     }
   }
-
-  if (pInputManager->MouseOver(sf::FloatRect(0, 0, 50, 50)) && pInputManager->KeyDown(sf::Keyboard::Space))
-  {
-    std::cout << "Message: Box selected\n";
-  }
-
 }
 
 void SplashScreen::Draw()

@@ -20,6 +20,7 @@ void ObjectManager::DeleteInactiveObjects()
 {
   auto it = m_allObjects.begin();
 
+  // Iterate through all Game Objects and remove the ones with m_active set to false
   for (; it != m_allObjects.end(); ++it)
   {
     if (!(*it)->m_active)
@@ -29,7 +30,7 @@ void ObjectManager::DeleteInactiveObjects()
     }
   }
 
-  // Find all the values in the list set to nullptr
+  // Find all the values in the list set to nullptr and push them to the end of the vector
   auto itr = std::remove(m_allObjects.begin(), m_allObjects.end(), nullptr);
 
   // Erase the values set to nullptr from the list
@@ -57,6 +58,7 @@ void ObjectManager::UpdateAll()
   sf::Clock deltaClock;
   sf::Time deltaTime = deltaClock.getElapsedTime();
 
+  // Iterate through all the objects and update them
   for (; it != m_allObjects.end(); ++it)
   {
     if ((*it)->m_active)

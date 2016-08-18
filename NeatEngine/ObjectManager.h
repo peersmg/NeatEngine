@@ -4,7 +4,7 @@
 class ObjectManager
 {
 private:
-  std::list<GameObject*> m_allObjects;  // Main list of gameobjects
+  std::vector<GameObject*> m_allObjects;  // Main list of gameobjects
 
 public:
   ObjectManager();

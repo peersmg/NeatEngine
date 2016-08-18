@@ -18,7 +18,7 @@ void InputManager::Update()
   // Clear events
   m_events.clear();
   
-  //Add events to array
+  // Add events to array
   while (Game::instance.GetWindow().pollEvent(currentEvent))
   {
     m_events.push_back(currentEvent);
@@ -38,10 +38,10 @@ void InputManager::Update()
 
 sf::Vector2i InputManager::GetMousePosition()
 {
-  // get the current mouse position in the window
+  // The position of the mouse on the screen
   sf::Vector2i pixelPos = sf::Mouse::getPosition(Game::instance.GetWindow());
 
-  // convert it to world coordinates and set it
+  // The reletive position of the mouse in the game
   return (sf::Vector2i)Game::instance.GetWindow().mapPixelToCoords(pixelPos);
 }
 

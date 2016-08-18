@@ -3,7 +3,6 @@
 
 DrawManager::DrawManager()
 {
-  
 }
 
 
@@ -23,7 +22,7 @@ DrawManager* DrawManager::GetInstance()
 
 void DrawManager::BasicRect(sf::FloatRect Rect, sf::Color color)
 {
-  sf::RectangleShape rectangle;
+  sf::RectangleShape rectangle;   // The rect class that will be drawn to the screen
 
   rectangle.setSize(sf::Vector2f(Rect.width, Rect.height));
   rectangle.setPosition(Rect.left, Rect.top);
@@ -41,6 +40,7 @@ sf::FloatRect DrawManager::DrawText(std::string Text, int fontSize, sf::Vector2f
   text.setCharacterSize(fontSize);
   text.setColor(Color);
 
+  // Set the position of the text based on the passed alignment
   switch (Alignment)
   {
   case alignment::TOPLEFT:
