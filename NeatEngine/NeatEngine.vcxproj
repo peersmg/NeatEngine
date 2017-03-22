@@ -11,24 +11,26 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DataTypes.h" />
-    <ClInclude Include="DrawManager.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="InputManager.h" />
-    <ClInclude Include="ObjectManager.h" />
-    <ClInclude Include="SplashScreen.h" />
-    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="NeatEngine\DataTypes.h" />
+    <ClInclude Include="NeatEngine\DrawManager.h" />
+    <ClInclude Include="NeatEngine\Game.h" />
+    <ClInclude Include="NeatEngine\GameObject.h" />
+    <ClInclude Include="NeatEngine\InputManager.h" />
+    <ClInclude Include="NeatEngine\ObjectManager.h" />
+    <ClInclude Include="NeatEngine\OutputLog.h" />
+    <ClInclude Include="NeatEngine\SplashScreen.h" />
+    <ClInclude Include="NeatEngine\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DrawManager.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="ObjectManager.cpp" />
-    <ClCompile Include="SplashScreen.cpp" />
-    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="NeatEngine\DrawManager.cpp" />
+    <ClCompile Include="NeatEngine\Game.cpp" />
+    <ClCompile Include="NeatEngine\GameObject.cpp" />
+    <ClCompile Include="NeatEngine\InputManager.cpp" />
+    <ClCompile Include="NeatEngine\Main.cpp" />
+    <ClCompile Include="NeatEngine\ObjectManager.cpp" />
+    <ClCompile Include="NeatEngine\OutputLog.cpp" />
+    <ClCompile Include="NeatEngine\SplashScreen.cpp" />
+    <ClCompile Include="NeatEngine\stdafx.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2E74C188-1ACD-4DA3-8637-2268EBD62841}</ProjectGuid>
