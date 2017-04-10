@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "OutputLog.h"
 #include <iostream>
 
@@ -13,6 +14,7 @@ OutputLog::~OutputLog()
 
 void OutputLog::Output(std::string text, OutputLog::MessageType type)
 {
+#ifndef NDEBUG
   switch (type)
   {
   case OutputLog::MessageType::MESSAGE:
@@ -24,4 +26,5 @@ void OutputLog::Output(std::string text, OutputLog::MessageType type)
   default:
     break;
   }
+#endif
 }

@@ -5,7 +5,6 @@
 class DrawManager
 {
 private:
-  static DrawManager* m_pInstance;  // Draw manager instance
   sf::Font m_defaultFont;           // The default font to use if an alternative font is not specified
 
 public:
@@ -13,11 +12,14 @@ public:
   DrawManager();
   ~DrawManager();
 
-  // Return a pointer to the draw manager instance
-  static DrawManager* GetInstance();
+  static DrawManager& GetInstance()
+  {
+    static DrawManager instance;
+    return instance;
+  }
 
   // Initialise the draw manager
-  void Initialise();
+  void LoadFonts();
 
   // Draw a basic rectangle
   void BasicRect(sf::FloatRect Rect, sf::Color color);

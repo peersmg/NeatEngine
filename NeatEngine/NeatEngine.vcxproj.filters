@@ -36,9 +36,6 @@
     <ClInclude Include="NeatEngine\InputManager.h">
       <Filter>Header Files\NeatEngine</Filter>
     </ClInclude>
-    <ClInclude Include="NeatEngine\ObjectManager.h">
-      <Filter>Header Files\NeatEngine</Filter>
-    </ClInclude>
     <ClInclude Include="NeatEngine\OutputLog.h">
       <Filter>Header Files\NeatEngine</Filter>
     </ClInclude>
@@ -46,6 +43,24 @@
       <Filter>Header Files\NeatEngine</Filter>
     </ClInclude>
     <ClInclude Include="NeatEngine\stdafx.h">
+      <Filter>Header Files\NeatEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="NeatEngine\Component.h">
+      <Filter>Header Files\NeatEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="NeatEngine\SpriteComponent.h">
+      <Filter>Header Files\NeatEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="NeatEngine\Scene.h">
+      <Filter>Header Files\NeatEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="NeatEngine\SplashScene.h">
+      <Filter>Header Files\NeatEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="NeatEngine\SceneManager.h">
+      <Filter>Header Files\NeatEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="NeatEngine\Transform.h">
       <Filter>Header Files\NeatEngine</Filter>
     </ClInclude>
   </ItemGroup>
@@ -65,9 +80,6 @@
     <ClCompile Include="NeatEngine\Main.cpp">
       <Filter>Source Files\NeatEngine</Filter>
     </ClCompile>
-    <ClCompile Include="NeatEngine\ObjectManager.cpp">
-      <Filter>Source Files\NeatEngine</Filter>
-    </ClCompile>
     <ClCompile Include="NeatEngine\OutputLog.cpp">
       <Filter>Source Files\NeatEngine</Filter>
     </ClCompile>
@@ -75,6 +87,24 @@
       <Filter>Source Files\NeatEngine</Filter>
     </ClCompile>
     <ClCompile Include="NeatEngine\stdafx.cpp">
+      <Filter>Source Files\NeatEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="NeatEngine\Component.cpp">
+      <Filter>Source Files\NeatEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="NeatEngine\SpriteComponent.cpp">
+      <Filter>Source Files\NeatEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="NeatEngine\Scene.cpp">
+      <Filter>Source Files\NeatEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="NeatEngine\SplashScene.cpp">
+      <Filter>Source Files\NeatEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="NeatEngine\SceneManager.cpp">
+      <Filter>Source Files\NeatEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="NeatEngine\Transform.cpp">
       <Filter>Source Files\NeatEngine</Filter>
     </ClCompile>
   </ItemGroup>

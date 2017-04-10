@@ -1,4 +1,6 @@
-#include <string>
+#pragma once
+
+#include "stdafx.h"
 
 class OutputLog
 {

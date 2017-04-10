@@ -11,26 +11,39 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="NeatEngine\Component.h" />
+    <ClInclude Include="NeatEngine\Transform.h" />
     <ClInclude Include="NeatEngine\DataTypes.h" />
     <ClInclude Include="NeatEngine\DrawManager.h" />
     <ClInclude Include="NeatEngine\Game.h" />
     <ClInclude Include="NeatEngine\GameObject.h" />
     <ClInclude Include="NeatEngine\InputManager.h" />
-    <ClInclude Include="NeatEngine\ObjectManager.h" />
+    <ClInclude Include="NeatEngine\SceneManager.h" />
     <ClInclude Include="NeatEngine\OutputLog.h" />
+    <ClInclude Include="NeatEngine\Scene.h" />
+    <ClInclude Include="NeatEngine\SplashScene.h" />
     <ClInclude Include="NeatEngine\SplashScreen.h" />
+    <ClInclude Include="NeatEngine\SpriteComponent.h" />
     <ClInclude Include="NeatEngine\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="NeatEngine\Component.cpp" />
+    <ClCompile Include="NeatEngine\Transform.cpp" />
     <ClCompile Include="NeatEngine\DrawManager.cpp" />
     <ClCompile Include="NeatEngine\Game.cpp" />
     <ClCompile Include="NeatEngine\GameObject.cpp" />
     <ClCompile Include="NeatEngine\InputManager.cpp" />
     <ClCompile Include="NeatEngine\Main.cpp" />
-    <ClCompile Include="NeatEngine\ObjectManager.cpp" />
+    <ClCompile Include="NeatEngine\SceneManager.cpp" />
     <ClCompile Include="NeatEngine\OutputLog.cpp" />
+    <ClCompile Include="NeatEngine\Scene.cpp" />
+    <ClCompile Include="NeatEngine\SplashScene.cpp" />
     <ClCompile Include="NeatEngine\SplashScreen.cpp" />
-    <ClCompile Include="NeatEngine\stdafx.cpp" />
+    <ClCompile Include="NeatEngine\SpriteComponent.cpp" />
+    <ClCompile Include="NeatEngine\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2E74C188-1ACD-4DA3-8637-2268EBD62841}</ProjectGuid>
@@ -69,17 +82,17 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(projectdir)/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(projectdir)/NeatEngine/SFML/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(projectdir)/lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(projectdir)/NeatEngine/SFML/lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-network-d.lib;sfml-audio-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;kernel32.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -90,14 +103,17 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SFML_STATIC;WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(projectdir)/NeatEngine/SFML/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(projectdir)/NeatEngine/SFML/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-network-s.lib;sfml-audio-s.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;kernel32.lib;user32.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;jpeg.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

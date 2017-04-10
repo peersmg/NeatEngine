@@ -1,8 +1,12 @@
+#include "stdafx.h"
 #include "DrawManager.h"
 #include "Game.h"
+#include "OutputLog.h"
 
 DrawManager::DrawManager()
 {
+  OutputLog log;
+  log.Output("Draw manager constructed", OutputLog::MessageType::MESSAGE);
 }
 
 
@@ -10,16 +14,10 @@ DrawManager::~DrawManager()
 {
 }
 
-void DrawManager::Initialise()
+void DrawManager::LoadFonts()
 {
   m_defaultFont.loadFromFile("fonts/SquaresBold.otf");
 }
-
-DrawManager* DrawManager::GetInstance()
-{
-  return m_pInstance;
-}
-
 void DrawManager::BasicRect(sf::FloatRect Rect, sf::Color color)
 {
   sf::RectangleShape rectangle;   // The rect class that will be drawn to the screen
@@ -81,4 +79,4 @@ sf::FloatRect DrawManager::DrawText(std::string Text, int fontSize, sf::Vector2f
   return text.getGlobalBounds();
 }
 
-DrawManager *DrawManager::m_pInstance = new DrawManager;
+//DrawManager *DrawManager::m_pInstance = new DrawManager;

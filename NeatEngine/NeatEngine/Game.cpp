@@ -1,7 +1,19 @@
+#include "stdafx.h"
 #include "Game.h"
 #include "InputManager.h"
 #include "DrawManager.h"
 #include "OutputLog.h"
+#include "Scene.h"
+#include "SplashScene.h"
+
+Game::Game()
+{
+
+}
+Game::~Game()
+{
+
+}
 
 void Game::Start()
 {
@@ -16,16 +28,14 @@ void Game::Start()
   _mainWindow.create(sf::VideoMode(1024, 768, 32), "Game Title", sf::Style::Titlebar | sf::Style::Close);
   _gameState = GameState::Playing;
 
-  //Initialise DrawManager
-  DrawManager::GetInstance()->Initialise();
+  // Load DrawManager font
+  DrawManager::GetInstance().LoadFonts();
 
-  // Game start code here
-  SplashScreen *mainSplash = new SplashScreen;
-  m_objects.AddObject(mainSplash);
-  mainSplash->Initialise();
+  // Add Scenes
+  m_SceneManager.AddScene("SplashScreen", new SplashScene());
 
-
-  ////
+  // Set the initial scene
+  m_SceneManager.SetScene("SplashScreen");
 
   // While the game is not exiting run the game loop
   while (!IsExiting())
@@ -87,10 +97,10 @@ void Game::GameLoop()
   InputManager::GetInstance()->SampleKeyboard();
 
   // Update and Draw GameObjects here
-  m_objects.UpdateAll();
-  m_objects.DrawAll();
+  m_SceneManager.UpdateScene();
+  m_SceneManager.DrawScene();
 
-  m_objects.DeleteInactiveObjects();
+  m_SceneManager.DeleteInactiveObjects();
 
   ////
 

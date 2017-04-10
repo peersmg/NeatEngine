@@ -1,11 +1,7 @@
 #pragma once
 
-#include <iostream>
-
 #include "stdafx.h"
-
-#include "SplashScreen.h"
-#include "ObjectManager.h"
+#include "SceneManager.h"
 
 class Game
 {
@@ -30,9 +26,11 @@ public:
   void SetState(GameState newState);
 
   static Game instance;           // Static game instance
-  ObjectManager m_objects;        // Manager class for game objects
+  SceneManager m_SceneManager;        // Manager class for game objects
 
 private:
+  Game();
+  ~Game();
   GameState _gameState;           // The current game state
   GameState _prevGameState;       // The previous game state
   sf::RenderWindow _mainWindow;   // The render window
