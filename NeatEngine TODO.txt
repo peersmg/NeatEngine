@@ -1,1 +1,8 @@
--Create object factory
+-Add TextRender component, rename sprite component
+-Add origin to transform
+-Add audio component, with map for sounds
+-Create camera component using views
+
+-Create object factory?
+-Improve commenting
+-Networking
