@@ -5,7 +5,7 @@
 class InputManager
 {
 private:
-  enum class ButtonState{ NONE, PRESSED, RELEASED };
+  enum class ButtonState{ NONE, PRESSED, DOWN, RELEASED };
 
   std::vector<sf::Event> m_events;        // Vector of current events
   std::vector<sf::Event> m_prevEvents;    // Vector of events from previous check
@@ -38,11 +38,17 @@ public:
   // Returns true if the mouse is over the specified rect
   bool MouseOver(sf::FloatRect Rect);
 
-  // Returns true if the mouse button is down
+  // Returns true if the mouse button has been pressed
   bool ButtonPressed(sf::Mouse::Button button);
 
   // Returns true if the mouse button is down
+  bool ButtonDown(sf::Mouse::Button button);
+
+  // Returns true if the mouse button is down
   bool ButtonReleased(sf::Mouse::Button button);
+
+  // Returns true if the key has been pressed
+  bool KeyPressed(sf::Keyboard::Key Key);
 
   // Returns true if the key is being held down
   bool KeyDown(sf::Keyboard::Key Key);

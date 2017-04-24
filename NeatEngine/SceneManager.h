@@ -28,14 +28,7 @@ public:
   * @param sceneId - The name of the scene to add the object to.
   * @param newObject - Pointer to the GameObject to be added.
   */
-  void AddObject(GameObject* newObject, std::string sceneId);
-
-  /**
-  * Add object to the current scene.
-  *
-  * @param newObject - Pointer to the GameObject to be added.
-  */
-  void AddObject(GameObject* newObject);
+  void AddObject(GameObject* newObject, std::string sceneId = "PersistentScene");
 
   /**
   * Add a new scene.

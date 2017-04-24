@@ -24,22 +24,7 @@ void SceneManager::AddObject(GameObject* newObject, std::string sceneId)
   }
   else
   {
-    OutputLog log;
-    log.Output("Scene \"" + sceneId + "\" does not exist!", OutputLog::MessageType::ERROR);
-  }
-}
-
-void SceneManager::AddObject(GameObject* newObject)
-{
-  if (m_pCurScene != nullptr)
-  {
-    // Add the object to the end of the list
-    m_pCurScene->AddObject(newObject);
-  }
-  else
-  {
-    OutputLog log;
-    log.Output("Current scene has not been set!", OutputLog::MessageType::ERROR);
+    OutputLog::GetInstance().AddLine("Scene \"" + sceneId + "\" does not exist!", MessageType::ERROR);
   }
 }
 
@@ -51,8 +36,7 @@ void SceneManager::AddScene(std::string sceneId, Scene *pScene)
   }
   else
   {
-    OutputLog log;
-    log.Output("Scene \"" + sceneId + "\" has already been added!", OutputLog::MessageType::MESSAGE);
+    OutputLog::GetInstance().AddLine("Scene \"" + sceneId + "\" has already been added!", MessageType::ERROR);
   }
 }
 
@@ -80,6 +64,11 @@ Scene* SceneManager::GetScene(std::string sceneId)
   if (SceneExists(sceneId))
   {
     return m_scenes[sceneId];
+  }
+  else
+  {
+    OutputLog::GetInstance().AddLine("Scene \"" + sceneId + "\" does not exist!", MessageType::FATAL_ERROR);
+    return nullptr;
   }
 }
 

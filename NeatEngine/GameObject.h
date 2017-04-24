@@ -34,9 +34,13 @@ public:
   bool GetPersistent();
 
   // Update to be used for basic logic, for more advanced logic create a component
-  virtual void Update(float deltaTime) = 0;
+  virtual void Update(float deltaTime) {    };
+
+  virtual void ButtonPressed(std::string buttonId) {    };
 
   void SetActive(bool active);
   bool GetActive();
+
+  void AddComponent(Component* newComponent);
 };
 

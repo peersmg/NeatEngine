@@ -1,19 +1,21 @@
 #include "stdafx.h"
 #include "Game.h"
 #include "InputManager.h"
-#include "DrawManager.h"
 #include "OutputLog.h"
 #include "Scene.h"
-#include "SplashScene.h"
+#include "SSplash.h"
 #include "SDefault.h"
+#include "ResourceLoader.h"
+#include "DefaultCamera.h"
+#include "OutputLog.h"
+
+#include "icon.h"
 
 Game::Game()
 {
-
 }
 Game::~Game()
 {
-
 }
 
 void Game::Start()
@@ -23,18 +25,33 @@ void Game::Start()
     return;
   }
 
-  OutputLog log;
-  log.Output("Starting...", OutputLog::MessageType::MESSAGE);
+  m_mainWindow = new Window("Game Title", sf::Vector2i(1228, 768), false);
+  m_mainWindow->GetRenderWindow()->setIcon(sfml_icon.width, sfml_icon.height, sfml_icon.pixel_data);
 
-  m_mainWindow.create(sf::VideoMode(1024, 768, 32), "Game Title", sf::Style::Titlebar | sf::Style::Close | sf::Style::Resize);
   m_gameState = GameState::Playing;
 
-  // Load DrawManager font
-  DrawManager::GetInstance().LoadFonts();
+  // Load files
+  ResourceLoader::GetInstance().LoadFonts();
+  ResourceLoader::GetInstance().LoadSoundEffects();
+  ResourceLoader::GetInstance().LoadTextures();
+  ResourceLoader::GetInstance().LoadStyles();
 
   // Add Scenes
-  m_SceneManager.AddScene("SplashScreen", new SplashScene());
+  m_SceneManager.AddScene("SplashScreen", new SSplash());
   m_SceneManager.AddScene("DefaultScene", new SDefault());
+  m_SceneManager.AddScene("DefaultScene", new SDefault());
+
+#ifndef NDEBUG
+  OutputLog::GetInstance().Initialise();
+#endif
+
+  OutputLog::GetInstance().AddLine("Starting...", MessageType::MESSAGE);
+
+  DefaultCamera* defaultCamera = new DefaultCamera();
+
+  m_SceneManager.AddObject(new DefaultCamera());
+
+  m_mainWindow->AddCamera(defaultCamera);
 
   // Set the initial scene
   m_SceneManager.SetScene("SplashScreen");
@@ -45,10 +62,10 @@ void Game::Start()
     GameLoop();
   }
 
-  m_mainWindow.close();
+  delete m_mainWindow;
 }
 
-sf::RenderWindow &Game::GetWindow()
+Window* Game::GetWindow()
 {
   return m_mainWindow;
 }
@@ -67,16 +84,14 @@ bool Game::IsExiting()
 
 void Game::GameLoop()
 {
-  OutputLog log;
-  // Clear to grey
-  m_mainWindow.clear(sf::Color(100, 100, 100));
-   
   ////
 
   sf::Time deltaTime = m_deltaClock.restart();
 
   // Update the inputs
   InputManager::GetInstance()->SampleKeyboard();
+
+  m_mainWindow->Update();
 
   // Update and Draw GameObjects here
   m_SceneManager.GetScene("PersistentScene")->UpdateObjects(deltaTime.asSeconds());
@@ -90,7 +105,11 @@ void Game::GameLoop()
 
   ////
 
-  m_mainWindow.display();
+#ifndef NDEBUG
+  OutputLog::GetInstance().Draw();
+#endif
+
+  m_mainWindow->Display();
   
 }
 

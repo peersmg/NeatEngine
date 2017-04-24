@@ -1,16 +1,28 @@
 #pragma once
 
 #include "stdafx.h"
+#include "Window.h"
 
 class OutputLog
 {
 private:
-
-public:
   OutputLog();
   ~OutputLog();
 
-  enum class MessageType {MESSAGE, ERROR};
+  Window* m_window;
+  std::vector<OutputInfo> m_log;
+  sf::Font m_font;
 
-  void Output(std::string text, MessageType type);
+public:
+  static OutputLog& GetInstance()
+  {
+    static OutputLog instance;
+    return instance;
+  }
+
+  void Initialise();
+
+  void AddLine(std::string text, MessageType type = MessageType::MESSAGE);
+
+  void Draw();
 };

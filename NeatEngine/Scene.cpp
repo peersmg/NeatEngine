@@ -56,6 +56,10 @@ void Scene::UpdateObjects(float deltaTime)
         }
       }
     }
+    if (m_active == false)
+    {
+      UnloadScene();
+    }
   }
   else
   {
@@ -89,8 +93,7 @@ void Scene::UnloadScene()
 
   DeleteInactiveObjects();
 
-  OutputLog log;
-  log.Output("Unloading scene...", OutputLog::MessageType::MESSAGE);
+  OutputLog::GetInstance().AddLine("Unloading scene...", MessageType::MESSAGE);
 }
 
 void Scene::DeleteInactiveObjects()

@@ -12,5 +12,6 @@ public:
   ~SplashScreen();
 
   void Update(float deltaTime) override;
+  void ButtonPressed(std::string buttonId) override;
 };
 

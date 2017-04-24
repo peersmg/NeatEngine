@@ -6,7 +6,8 @@ class Transform
 private:
   sf::Vector2f m_position;    // Object position
   sf::Vector2f m_scale;       // Object scale
-  float m_angle;              // Object anglegit commit -m "Changed to use component architecture"
+  float m_angle;              // Object angle
+  sf::Vector2f m_origin;      // Object origin point
 
 public:
 
@@ -17,7 +18,7 @@ public:
   * @param scale - Initial scale.
   * @param angle - Initial angle.
   */
-  Transform(sf::Vector2f position = sf::Vector2f(0, 0), sf::Vector2f scale = sf::Vector2f(1.0, 1.0), float angle = 0.0);
+  Transform(sf::Vector2f position = sf::Vector2f(0, 0), sf::Vector2f scale = sf::Vector2f(1.0, 1.0), sf::Vector2f origin = sf::Vector2f(0.0, 0.0), float angle = 0.0);
 
   /**
   * Destructor.
@@ -53,7 +54,7 @@ public:
   void SetAngle(float angle);
 
   /**
-  * Set the transform angle.
+  * Get the transform angle.
   *
   * @return The scale of the transform.
   */
@@ -65,5 +66,19 @@ public:
   * @param scale - The new scale.
   */
   void SetScale(sf::Vector2f scale);
+
+  /**
+  * Get the origin point.
+  *
+  * @return The origin point.
+  */
+  sf::Vector2f GetOrigin();
+
+  /**
+  * Set the origin point.
+  *
+  * @param origin - The new origin point.
+  */
+  void SetOrigin(sf::Vector2f origin);
 };
 

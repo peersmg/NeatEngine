@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "SceneManager.h"
+#include "Window.h"
 
 class Game
 {
@@ -11,7 +12,7 @@ private:
   ~Game();
 
   GameState m_gameState;           // The current game state
-  sf::RenderWindow m_mainWindow;   // The render window
+  Window* m_mainWindow;             // The main window
 
   sf::Clock m_deltaClock;         // Clock used to measure delta time
 
@@ -26,8 +27,8 @@ public:
   // Main game loop, called as long as the game is not exiting
   void GameLoop();
 
-  // Return a reference to the window
-  sf::RenderWindow &GetWindow();
+  // Return a pointer to the window
+  Window* GetWindow();
 
   // Set _gameState
   void SetState(GameState newState);

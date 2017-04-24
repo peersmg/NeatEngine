@@ -3,20 +3,19 @@
 #include "Component.h"
 
 class GameObject;
-class CTransform;
 
 class CSprite : public Component
 {
 private:
-  sf::Texture m_splashImage;    // Image to be used as a sprite
-  sf::Sprite m_splashSprite;    // The sprite that will be drawn to the screen
+  sf::Texture m_texture;        // Image to be used as a sprite
+  sf::Sprite m_sprite;          // The sprite that will be drawn to the screen
   bool m_imageLoaded;           // Has the image been properly loaded
 
 public:
-  CSprite(GameObject* pOwner, std::string imageFile);
+  CSprite(GameObject* pOwner, std::string imageFile, bool smooth = false);
   ~CSprite();
 
-  virtual void Update(float deltatime) override;
-  virtual void Draw() override;
+  void Update(float deltatime) override;
+  void Draw() override;
 };
 

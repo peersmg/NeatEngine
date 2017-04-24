@@ -1,11 +1,11 @@
 #pragma once
 #include "stdafx.h"
 #include "Scene.h"
-class SplashScene : public Scene
+class SSplash : public Scene
 {
 public:
-  SplashScene();
-  ~SplashScene();
+  SSplash();
+  ~SSplash();
 
   void LoadScene() override;
 };

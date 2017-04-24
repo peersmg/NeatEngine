@@ -1,11 +1,12 @@
 #include "stdafx.h"
 #include "Transform.h"
 
-Transform::Transform(sf::Vector2f position, sf::Vector2f scale, float angle)
+Transform::Transform(sf::Vector2f position, sf::Vector2f scale, sf::Vector2f origin, float angle)
 {
   m_position = position;
   m_scale = scale;
   m_angle = angle;
+  m_origin = origin;
 }
 
 Transform::~Transform()
@@ -40,4 +41,14 @@ sf::Vector2f Transform::GetScale()
 void Transform::SetScale(sf::Vector2f scale)
 {
   m_scale = scale;
+}
+
+sf::Vector2f Transform::GetOrigin()
+{
+  return m_origin;
+}
+
+void Transform::SetOrigin(sf::Vector2f origin)
+{
+  m_origin = origin;
 }

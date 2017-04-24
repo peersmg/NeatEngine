@@ -19,18 +19,24 @@
     <Filter Include="Source Files\NeatEngine">
       <UniqueIdentifier>{7a64f01a-c452-45f8-8e93-7240c50d3ef0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\NeatEngine\Components">
+      <UniqueIdentifier>{a1ef5a76-4382-40ee-a057-01d3fb9cb6d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NeatEngine\Components">
+      <UniqueIdentifier>{666d7c9d-986d-464a-a44c-c810f32dc290}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NeatEngine\GameObjects">
+      <UniqueIdentifier>{d3725e9e-b869-4828-a630-9cceef36428d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\NeatEngine\GameObjects">
+      <UniqueIdentifier>{44071cf2-7ba1-4804-bd8f-8496a8c86880}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
       <Filter>Header Files\NeatEngine</Filter>
     </ClInclude>
-    <ClInclude Include="CSprite.h">
-      <Filter>Header Files\NeatEngine</Filter>
-    </ClInclude>
     <ClInclude Include="DataTypes.h">
-      <Filter>Header Files\NeatEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="DrawManager.h">
       <Filter>Header Files\NeatEngine</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
@@ -51,12 +57,6 @@
     <ClInclude Include="SceneManager.h">
       <Filter>Header Files\NeatEngine</Filter>
     </ClInclude>
-    <ClInclude Include="SplashScene.h">
-      <Filter>Header Files\NeatEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="SplashScreen.h">
-      <Filter>Header Files\NeatEngine</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Header Files\NeatEngine</Filter>
     </ClInclude>
@@ -66,15 +66,51 @@
     <ClInclude Include="SDefault.h">
       <Filter>Header Files\NeatEngine</Filter>
     </ClInclude>
+    <ClInclude Include="CSprite.h">
+      <Filter>Header Files\NeatEngine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SplashScreen.h">
+      <Filter>Header Files\NeatEngine\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CText.h">
+      <Filter>Header Files\NeatEngine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SSplash.h">
+      <Filter>Header Files\NeatEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceLoader.h">
+      <Filter>Header Files\NeatEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="CAudio.h">
+      <Filter>Header Files\NeatEngine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CRectShape.h">
+      <Filter>Header Files\NeatEngine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CCamera.h">
+      <Filter>Header Files\NeatEngine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Header Files\NeatEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultCamera.h">
+      <Filter>Header Files\NeatEngine\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIStyle.h">
+      <Filter>Header Files\NeatEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="CMyButton.h">
+      <Filter>Header Files\NeatEngine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="icon.h">
+      <Filter>Header Files\NeatEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Component.cpp">
-      <Filter>Source Files\NeatEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="CSprite.cpp">
-      <Filter>Source Files\NeatEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="DrawManager.cpp">
       <Filter>Source Files\NeatEngine</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
@@ -98,12 +134,6 @@
     <ClCompile Include="SceneManager.cpp">
       <Filter>Source Files\NeatEngine</Filter>
     </ClCompile>
-    <ClCompile Include="SplashScene.cpp">
-      <Filter>Source Files\NeatEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="SplashScreen.cpp">
-      <Filter>Source Files\NeatEngine</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files\NeatEngine</Filter>
     </ClCompile>
@@ -113,5 +143,51 @@
     <ClCompile Include="SDefault.cpp">
       <Filter>Source Files\NeatEngine</Filter>
     </ClCompile>
+    <ClCompile Include="CSprite.cpp">
+      <Filter>Source Files\NeatEngine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SplashScreen.cpp">
+      <Filter>Source Files\NeatEngine\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CText.cpp">
+      <Filter>Source Files\NeatEngine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SSplash.cpp">
+      <Filter>Source Files\NeatEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceLoader.cpp">
+      <Filter>Source Files\NeatEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="CAudio.cpp">
+      <Filter>Source Files\NeatEngine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="CRectShape.cpp">
+      <Filter>Source Files\NeatEngine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="CCamera.cpp">
+      <Filter>Source Files\NeatEngine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Source Files\NeatEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultCamera.cpp">
+      <Filter>Source Files\NeatEngine\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIStyle.cpp">
+      <Filter>Source Files\NeatEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="CMyButton.cpp">
+      <Filter>Source Files\NeatEngine\Components</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="NeatEngine.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="neat_icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

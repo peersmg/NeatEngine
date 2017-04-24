@@ -3,30 +3,40 @@
 #include "GameObject.h"
 #include "OutputLog.h"
 #include "Game.h"
+#include "ResourceLoader.h"
 
-#include "Transform.h"
-
-CSprite::CSprite(GameObject* pOwner, std::string imageFile)
+CSprite::CSprite(GameObject* pOwner, std::string imageFile, bool smooth)
 {
   m_imageLoaded = false;
   m_pOwner = pOwner;
 
-  OutputLog log;
-
-  if (m_splashImage.loadFromFile(imageFile))
+  if (ResourceLoader::GetInstance().isTextureLoaded(imageFile))
   {
-    m_splashSprite.setTexture(m_splashImage);
-
-    m_splashSprite.setScale(m_pOwner->GetTransform().GetScale());
-    m_splashSprite.setPosition(m_pOwner->GetTransform().GetPosition());
-    m_splashSprite.setRotation(m_pOwner->GetTransform().GetAngle());
-
+    m_texture = ResourceLoader::GetInstance().GetTexture(imageFile);
     m_imageLoaded = true;
-    log.Output("Image \"" + imageFile + "\" loaded.", OutputLog::MessageType::MESSAGE);
   }
   else
   {
-    log.Output("SplashScreen image failed to load", OutputLog::MessageType::ERROR);
+    m_imageLoaded = m_texture.loadFromFile(imageFile);
+  }
+
+  if (m_imageLoaded)
+  {
+
+    m_texture.setSmooth(smooth);
+
+    m_sprite.setTexture(m_texture);
+
+    m_sprite.setScale(m_pOwner->GetTransform().GetScale());
+    m_sprite.setPosition(m_pOwner->GetTransform().GetPosition());
+    m_sprite.setRotation(m_pOwner->GetTransform().GetAngle());
+
+    m_imageLoaded = true;
+    OutputLog::GetInstance().AddLine("Image \"" + imageFile + "\" loaded.", MessageType::MESSAGE);
+  }
+  else
+  {
+    OutputLog::GetInstance().AddLine("Image failed to load", MessageType::ERROR);
   }
 }
 
@@ -36,15 +46,15 @@ CSprite::~CSprite()
 
 void CSprite::Update(float deltaTime)
 {
-  m_splashSprite.setScale(m_pOwner->GetTransform().GetScale());
-  m_splashSprite.setPosition(m_pOwner->GetTransform().GetPosition());
-  m_splashSprite.setRotation(m_pOwner->GetTransform().GetAngle());
+  m_sprite.setScale(m_pOwner->GetTransform().GetScale());
+  m_sprite.setPosition(m_pOwner->GetTransform().GetPosition());
+  m_sprite.setRotation(m_pOwner->GetTransform().GetAngle());
 }
 
 void CSprite::Draw()
 {
   if (m_imageLoaded)
   {
-    Game::instance.GetWindow().draw(m_splashSprite);
+    Game::instance.GetWindow()->Draw(m_sprite);
   }
 }

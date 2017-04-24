@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "InputManager.h"
 #include "Game.h"
+#include "OutputLog.h"
 
 InputManager::InputManager()
 {
@@ -20,12 +21,28 @@ void InputManager::Update()
 void InputManager::SampleKeyboard()
 {
   // Clear events
-  ClearKeyStates();
+  //ClearKeyStates();
 
   sf::Event currentEvent;
 
+  for (auto const &element : m_keyState)
+  {
+    if (element.second == ButtonState::PRESSED)
+    {
+      m_keyState[element.first] = ButtonState::DOWN;
+    }
+  }
+
+  for (auto const &element : m_mouseState)
+  {
+    if (element.second == ButtonState::PRESSED)
+    {
+      m_mouseState[element.first] = ButtonState::DOWN;
+    }
+  }
+
   // Set key events
-  while (Game::instance.GetWindow().pollEvent(currentEvent))
+  while (Game::instance.GetWindow()->GetRenderWindow()->pollEvent(currentEvent))
   {
     m_events.push_back(currentEvent);
     
@@ -68,10 +85,12 @@ void InputManager::ClearKeyStates()
 sf::Vector2i InputManager::GetMousePosition()
 {
   // The position of the mouse on the screen
-  sf::Vector2i pixelPos = sf::Mouse::getPosition(Game::instance.GetWindow());
+  sf::Vector2i pixelPos = sf::Mouse::getPosition(*Game::instance.GetWindow()->GetRenderWindow());
 
   // The reletive position of the mouse in the game
-  return (sf::Vector2i)Game::instance.GetWindow().mapPixelToCoords(pixelPos);
+  return (sf::Vector2i)Game::instance.GetWindow()->GetRenderWindow()->mapPixelToCoords(pixelPos);
+
+  //return pixelPos;
 }
 
 bool InputManager::MouseOver(sf::FloatRect Rect)
@@ -99,6 +118,16 @@ bool InputManager::ButtonPressed(sf::Mouse::Button button)
   return false;
 }
 
+bool InputManager::ButtonDown(sf::Mouse::Button button)
+{
+  if (m_mouseState[button] == ButtonState::DOWN)
+  {
+    return true;
+  }
+
+  return false;
+}
+
 bool InputManager::ButtonReleased(sf::Mouse::Button button)
 {
   if (m_mouseState[button] == ButtonState::RELEASED)
@@ -109,10 +138,21 @@ bool InputManager::ButtonReleased(sf::Mouse::Button button)
   return false;
 }
 
-bool InputManager::KeyDown(sf::Keyboard::Key Key)
+bool InputManager::KeyPressed(sf::Keyboard::Key Key)
 {
   //return sf::Keyboard::isKeyPressed(Key);
   if (m_keyState[Key] == ButtonState::PRESSED)
+  {
+    return true;
+  }
+
+  return false;
+}
+
+bool InputManager::KeyDown(sf::Keyboard::Key Key)
+{
+  //return sf::Keyboard::isKeyPressed(Key);
+  if (m_keyState[Key] == ButtonState::DOWN)
   {
     return true;
   }

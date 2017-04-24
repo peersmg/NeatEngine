@@ -13,6 +13,12 @@ GameObject::GameObject()
 
 GameObject::~GameObject()
 {
+  while (m_components.size() > 0)
+  {
+    delete m_components[m_components.size()-1];
+    m_components[m_components.size()-1] = nullptr;
+    m_components.pop_back();
+  }
 }
 
 Transform GameObject::GetTransform()
@@ -58,4 +64,9 @@ bool GameObject::GetActive()
 std::vector<Component*> GameObject::GetComponents()
 {
   return m_components;
+}
+
+void GameObject::AddComponent(Component* newComponent)
+{
+  m_components.push_back(newComponent);
 }
