@@ -4,6 +4,7 @@
 #include "GameObject.h"
 #include "Game.h"
 #include "OutputLog.h"
+#include "Window.h"
 
 CMyButton::CMyButton(GameObject* pOwner, std::string buttonId, std::string text, sf::FloatRect rect, std::string style, int fontSize, alignment alignment, int camera)
 {
@@ -15,6 +16,24 @@ CMyButton::CMyButton(GameObject* pOwner, std::string buttonId, std::string text,
   m_alignment = alignment;
   m_style = ResourceLoader::GetInstance().GetStyle(style).GetButtonStyle();
   m_pressed = false;
+  m_window = Game::instance.GetWindow();
+
+  m_rect = rect;
+  m_text = sf::Text(m_textValue, m_style.font);
+  SetPosition(sf::Vector2f(rect.left, rect.top));
+}
+
+CMyButton::CMyButton(GameObject* pOwner, std::string buttonId, std::string text, sf::FloatRect rect, std::string style, Window* window, int fontSize, alignment alignment, int camera)
+{
+  m_pOwner = pOwner;
+  m_buttonId = buttonId;
+  m_textValue = text;
+  m_fontSize = fontSize;
+  m_camera = camera;
+  m_alignment = alignment;
+  m_style = ResourceLoader::GetInstance().GetStyle(style).GetButtonStyle();
+  m_pressed = false;
+  m_window = window;
 
   m_rect = rect;
   m_text = sf::Text(m_textValue, m_style.font);
@@ -54,15 +73,26 @@ void CMyButton::Update(float deltaTime)
 
 void CMyButton::Draw()
 {
+  m_rectangleShape.setSize(sf::Vector2f(m_rect.width, m_rect.height));
+  m_rectangleShape.setPosition(sf::Vector2f(m_rect.left, m_rect.top));
+
   if (m_style.useImg == true)
   {
-
+    if (m_pressed && m_mouseOver)
+    {
+      m_rectangleShape.setTexture(&m_style.downBackgroundImg);
+    }
+    else if (m_mouseOver)
+    {
+      m_rectangleShape.setTexture(&m_style.hoverBackgroundImg);
+    }
+    else
+    {
+      m_rectangleShape.setTexture(&m_style.normalBackgroundImg);
+    }
   }
   else
   {
-    m_rectangleShape.setSize(sf::Vector2f(m_rect.width, m_rect.height));
-    m_rectangleShape.setPosition(sf::Vector2f(m_rect.left, m_rect.top));
-
     if (m_pressed && m_mouseOver)
     {
       m_rectangleShape.setFillColor(m_style.downBackgroundCol);
@@ -75,12 +105,16 @@ void CMyButton::Draw()
     {
       m_rectangleShape.setFillColor(m_style.normalBackgroundCol);
     }
-    m_text.setCharacterSize(m_fontSize);
-    m_text.setPosition(sf::Vector2f(m_rect.left + (m_rect.width / 2) - (m_text.getGlobalBounds().width / 2), m_rect.top + (m_rect.height / 2) - (m_text.getGlobalBounds().height/1.2)));
-    
-    Game::instance.GetWindow()->Draw(m_rectangleShape);
-    Game::instance.GetWindow()->Draw(m_text);
+
+    m_rectangleShape.setOutlineColor(m_style.outlineColor);
+    m_rectangleShape.setOutlineThickness(m_style.outlineSize);
   }
+  
+  m_text.setCharacterSize(m_fontSize);
+  m_text.setPosition(sf::Vector2f(m_rect.left + (m_rect.width / 2) - (m_text.getGlobalBounds().width / 2), m_rect.top + (m_rect.height / 2) - (m_text.getGlobalBounds().height / 1.2)));
+
+  m_window->Draw(m_rectangleShape);
+  m_window->Draw(m_text);
 }
 
 void CMyButton::SetText(std::string newText)

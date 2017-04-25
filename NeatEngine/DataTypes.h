@@ -43,6 +43,9 @@ struct ButtonStyle
   sf::Color downTextCol;
 
   sf::Font font;
+
+  int outlineSize;
+  sf::Color outlineColor;
 };
 
 struct TextboxStyle

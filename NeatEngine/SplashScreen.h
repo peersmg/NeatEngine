@@ -4,9 +4,14 @@
 
 #include "Transform.h"
 
+class CAudio;
+
 class SplashScreen : public GameObject
 {
 private:
+  CAudio* m_buttonSound;
+
+
 public:
   SplashScreen();
   ~SplashScreen();

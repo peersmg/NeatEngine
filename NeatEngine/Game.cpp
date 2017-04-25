@@ -8,6 +8,7 @@
 #include "ResourceLoader.h"
 #include "DefaultCamera.h"
 #include "OutputLog.h"
+#include "OutputLogSettings.h"
 
 #include "icon.h"
 
@@ -28,6 +29,10 @@ void Game::Start()
   m_mainWindow = new Window("Game Title", sf::Vector2i(1228, 768), false);
   m_mainWindow->GetRenderWindow()->setIcon(sfml_icon.width, sfml_icon.height, sfml_icon.pixel_data);
 
+#ifndef NDEBUG
+  OutputLog::GetInstance().Initialise();
+#endif
+
   m_gameState = GameState::Playing;
 
   // Load files
@@ -38,20 +43,21 @@ void Game::Start()
 
   // Add Scenes
   m_SceneManager.AddScene("SplashScreen", new SSplash());
-  m_SceneManager.AddScene("DefaultScene", new SDefault());
-  m_SceneManager.AddScene("DefaultScene", new SDefault());
 
-#ifndef NDEBUG
-  OutputLog::GetInstance().Initialise();
-#endif
+  m_SceneManager.AddScene("DefaultScene", new SDefault());
+  m_SceneManager.AddScene("DefaultScene", new SDefault());
 
   OutputLog::GetInstance().AddLine("Starting...", MessageType::MESSAGE);
 
-  DefaultCamera* defaultCamera = new DefaultCamera();
+  DefaultCamera* defaultCamera = new DefaultCamera(m_mainWindow);
 
-  m_SceneManager.AddObject(new DefaultCamera());
+  //m_SceneManager.AddObject(defaultCamera);
+  
 
   m_mainWindow->AddCamera(defaultCamera);
+  OutputLog::GetInstance().GetWindow()->AddCamera(new DefaultCamera(OutputLog::GetInstance().GetWindow()));
+
+  m_SceneManager.AddObject(new OutputLogSettings());
 
   // Set the initial scene
   m_SceneManager.SetScene("SplashScreen");

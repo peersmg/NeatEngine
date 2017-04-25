@@ -108,6 +108,9 @@
     <ClInclude Include="resource1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="OutputLogSettings.h">
+      <Filter>Header Files\NeatEngine\GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Component.cpp">
@@ -178,6 +181,9 @@
     </ClCompile>
     <ClCompile Include="CMyButton.cpp">
       <Filter>Source Files\NeatEngine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputLogSettings.cpp">
+      <Filter>Source Files\NeatEngine\GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

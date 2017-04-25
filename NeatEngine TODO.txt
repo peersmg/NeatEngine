@@ -1,0 +1,23 @@
+-Add option to filter messages in the output log
+-Fix camera?
+-Add visible bool to component, draw not called on non visible components
+
+-CGUIElement component superclass (with functions for drawing rects and text) OR redo drawmanager
+-Text field component (use font.getLineSpacing)
+-Drop down component
+
+-Create object factory, component factory?
+-Make resource loader scan folder for Fonts and GUI
+-OutputLog saves to text file
+-Event system for components
+-Add circle shape component
+-Add fade to audio component
+-Improve commenting
+-Particle Effects
+-Saving system
+-Remake pong
+-Create user guide
+
+Big jobs:
+-Physics
+-Networking

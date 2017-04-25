@@ -3,9 +3,9 @@
 #include "CCamera.h"
 #include "Game.h"
 
-DefaultCamera::DefaultCamera()
+DefaultCamera::DefaultCamera(Window *window)
 {
-  AddComponent(new CCamera(this, Game::instance.GetWindow()->GetSize()));
+  AddComponent(new CCamera(this, window->GetSize()));
 }
 
 DefaultCamera::~DefaultCamera()

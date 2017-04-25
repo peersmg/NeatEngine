@@ -11,7 +11,9 @@ private:
 
   Window* m_window;
   std::vector<OutputInfo> m_log;
+  std::vector<OutputInfo> m_errorLog;
   sf::Font m_font;
+  bool m_showMessages;
 
 public:
   static OutputLog& GetInstance()
@@ -25,4 +27,12 @@ public:
   void AddLine(std::string text, MessageType type = MessageType::MESSAGE);
 
   void Draw();
+
+  Window* GetWindow();
+  void CloseWindow();
+
+  bool isShowingMessages();
+  void ShowMessages(bool showMessages);
+
+  void PrintLog(std::vector<OutputInfo> &log);
 };

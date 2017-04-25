@@ -2,11 +2,12 @@
 #include "GameObject.h"
 
 class CCamera;
+class Window;
 class DefaultCamera : public GameObject
 {
 
 public:
-  DefaultCamera();
+  DefaultCamera(Window *window);
   ~DefaultCamera();
 };
 

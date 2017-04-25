@@ -45,7 +45,7 @@ void InputManager::SampleKeyboard()
   while (Game::instance.GetWindow()->GetRenderWindow()->pollEvent(currentEvent))
   {
     m_events.push_back(currentEvent);
-    
+
     if (currentEvent.type == sf::Event::KeyPressed)
     {
       m_keyState[currentEvent.key.code] = ButtonState::PRESSED;
@@ -67,6 +67,26 @@ void InputManager::SampleKeyboard()
       Game::instance.SetState(GameState::Exiting);
     }
   }
+
+#ifndef NDEBUG
+  bool closeWindow = false;
+
+  if (OutputLog::GetInstance().GetWindow() != nullptr)
+  {
+    while (OutputLog::GetInstance().GetWindow()->GetRenderWindow()->pollEvent(currentEvent))
+    {
+      if (currentEvent.type == sf::Event::Closed)
+      {
+        closeWindow = true;
+      }
+    }
+  }
+
+  if (closeWindow)
+  {
+    OutputLog::GetInstance().CloseWindow();
+  }
+#endif
 }
 
 void InputManager::ClearKeyStates()

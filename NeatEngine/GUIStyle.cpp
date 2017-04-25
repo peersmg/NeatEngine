@@ -30,6 +30,7 @@ void GUIStyle::LoadAll()
   }
 
   // Button Style
+
   m_buttonStyle.useImg = false;
   m_buttonStyle.normalBackgroundCol = sf::Color(100, 0, 0);
   m_buttonStyle.hoverBackgroundCol = sf::Color(200, 0, 0);
@@ -37,6 +38,8 @@ void GUIStyle::LoadAll()
   m_buttonStyle.normalTextCol = sf::Color::Black;
   m_buttonStyle.hoverTextCol = m_buttonStyle.normalTextCol;
   m_buttonStyle.downTextCol = m_buttonStyle.normalTextCol;
+  m_buttonStyle.outlineColor = sf::Color::Black;
+  m_buttonStyle.outlineSize = 3;
 
   if (ResourceLoader::GetInstance().isFontLoaded("fonts/SquaresBold.otf"))
   {
