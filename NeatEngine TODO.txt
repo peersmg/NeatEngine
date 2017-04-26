@@ -1,5 +1,3 @@
--Add option to filter messages in the output log
--Fix camera?
 -Add visible bool to component, draw not called on non visible components
 
 -CGUIElement component superclass (with functions for drawing rects and text) OR redo drawmanager

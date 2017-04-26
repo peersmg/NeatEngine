@@ -5,6 +5,8 @@
 #include "Game.h"
 #include <iostream>
 
+#include "Component.h"
+
 OutputLog::OutputLog()
 {
   m_window = nullptr;
@@ -21,6 +23,7 @@ OutputLog::~OutputLog()
 void OutputLog::Initialise()
 {
   m_window = new Window("Output Log", sf::Vector2i(1000, 400), false, sf::Color(50, 50, 50));
+
 }
 
 void OutputLog::AddLine(std::string text, MessageType type)

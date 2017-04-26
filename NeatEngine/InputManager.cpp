@@ -75,6 +75,13 @@ void InputManager::SampleKeyboard()
   {
     while (OutputLog::GetInstance().GetWindow()->GetRenderWindow()->pollEvent(currentEvent))
     {
+      if (currentEvent.type == sf::Event::KeyReleased)
+      {
+        if (currentEvent.mouseButton.button == sf::Keyboard::Space)
+        {
+          OutputLog::GetInstance().ShowMessages(!OutputLog::GetInstance().isShowingMessages());
+        }
+      }
       if (currentEvent.type == sf::Event::Closed)
       {
         closeWindow = true;

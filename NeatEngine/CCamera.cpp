@@ -24,9 +24,12 @@ CCamera::~CCamera()
 
 void CCamera::Update(float deltaTime)
 {
-  m_view.reset(sf::FloatRect(m_pOwner->GetTransform().GetPosition().x, m_pOwner->GetTransform().GetPosition().y, m_size.x, m_size.y));
+  m_view.reset(sf::FloatRect(m_pOwner->GetTransform().GetOrigin().x*m_pOwner->GetTransform().GetPosition().x,
+    m_pOwner->GetTransform().GetOrigin().y*m_pOwner->GetTransform().GetPosition().y,
+    m_size.x, m_size.y));
+
   m_view.setViewport(m_viewport);
-  m_view.setCenter(sf::Vector2f(m_pOwner->GetTransform().GetOrigin().x*m_size.x, m_pOwner->GetTransform().GetOrigin().y*m_size.y));
+  //m_view.setCenter(sf::Vector2f(m_pOwner->GetTransform().GetOrigin().x*m_size.x, m_pOwner->GetTransform().GetOrigin().y*m_size.y));
   m_view.setRotation(m_angle);
 }
 

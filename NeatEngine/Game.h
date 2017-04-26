@@ -13,6 +13,7 @@ private:
 
   GameState m_gameState;           // The current game state
   Window* m_mainWindow;             // The main window
+  
 
   sf::Clock m_deltaClock;         // Clock used to measure delta time
 

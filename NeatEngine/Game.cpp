@@ -8,7 +8,7 @@
 #include "ResourceLoader.h"
 #include "DefaultCamera.h"
 #include "OutputLog.h"
-#include "OutputLogSettings.h"
+#include "Component.h"
 
 #include "icon.h"
 
@@ -51,13 +51,8 @@ void Game::Start()
 
   DefaultCamera* defaultCamera = new DefaultCamera(m_mainWindow);
 
-  //m_SceneManager.AddObject(defaultCamera);
-  
-
+  m_SceneManager.AddObject(defaultCamera);
   m_mainWindow->AddCamera(defaultCamera);
-  OutputLog::GetInstance().GetWindow()->AddCamera(new DefaultCamera(OutputLog::GetInstance().GetWindow()));
-
-  m_SceneManager.AddObject(new OutputLogSettings());
 
   // Set the initial scene
   m_SceneManager.SetScene("SplashScreen");
@@ -110,12 +105,11 @@ void Game::GameLoop()
   m_SceneManager.DeleteInactiveObjects();
 
   ////
+  m_mainWindow->Display();
 
 #ifndef NDEBUG
   OutputLog::GetInstance().Draw();
 #endif
-
-  m_mainWindow->Display();
   
 }
 

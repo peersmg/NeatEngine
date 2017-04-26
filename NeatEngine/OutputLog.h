@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "Window.h"
 
+
 class OutputLog
 {
 private:
@@ -14,7 +15,6 @@ private:
   std::vector<OutputInfo> m_errorLog;
   sf::Font m_font;
   bool m_showMessages;
-
 public:
   static OutputLog& GetInstance()
   {

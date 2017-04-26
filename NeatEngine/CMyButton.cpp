@@ -23,22 +23,6 @@ CMyButton::CMyButton(GameObject* pOwner, std::string buttonId, std::string text,
   SetPosition(sf::Vector2f(rect.left, rect.top));
 }
 
-CMyButton::CMyButton(GameObject* pOwner, std::string buttonId, std::string text, sf::FloatRect rect, std::string style, Window* window, int fontSize, alignment alignment, int camera)
-{
-  m_pOwner = pOwner;
-  m_buttonId = buttonId;
-  m_textValue = text;
-  m_fontSize = fontSize;
-  m_camera = camera;
-  m_alignment = alignment;
-  m_style = ResourceLoader::GetInstance().GetStyle(style).GetButtonStyle();
-  m_pressed = false;
-  m_window = window;
-
-  m_rect = rect;
-  m_text = sf::Text(m_textValue, m_style.font);
-  SetPosition(sf::Vector2f(rect.left, rect.top));
-}
 
 CMyButton::~CMyButton()
 {
@@ -113,13 +97,17 @@ void CMyButton::Draw()
   m_text.setCharacterSize(m_fontSize);
   m_text.setPosition(sf::Vector2f(m_rect.left + (m_rect.width / 2) - (m_text.getGlobalBounds().width / 2), m_rect.top + (m_rect.height / 2) - (m_text.getGlobalBounds().height / 1.2)));
 
-  m_window->Draw(m_rectangleShape);
-  m_window->Draw(m_text);
+  if (m_window != nullptr)
+  {
+    m_window->Draw(m_rectangleShape);
+    m_window->Draw(m_text);
+  }
+  
 }
 
 void CMyButton::SetText(std::string newText)
 {
-
+  m_text.setString(newText);
 }
 
 void CMyButton::SetPosition(sf::Vector2f newPosition)
