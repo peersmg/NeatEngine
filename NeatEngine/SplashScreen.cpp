@@ -8,12 +8,13 @@
 #include "CMyButton.h"
 #include "CRectShape.h"
 #include "CAudio.h"
+#include "CTextfield.h"
 
 SplashScreen::SplashScreen()
 {
   m_active = true;
 
-  AddComponent(new CRectShape(this, sf::FloatRect(0, 0, Game::instance.GetWindow()->GetSize().x, Game::instance.GetWindow()->GetSize().y), sf::Color::White));
+  AddComponent(new CRectShape(this, sf::FloatRect(0, 0, Game::instance.GetWindow()->GetSize().x, Game::instance.GetWindow()->GetSize().y), sf::Color(100, 50, 50)));
 
   AddComponent(new CText(this, "Neat Engine", sf::Vector2f(Game::instance.GetWindow()->GetSize().x / 2, 0), "DefaultStyle", 122, alignment::TOPCENTER));
 
@@ -23,6 +24,9 @@ SplashScreen::SplashScreen()
   
   m_buttonSound = new CAudio(this, "resources/Pickup_Coin.wav", true);
   AddComponent(m_buttonSound);
+
+  AddComponent(new CTextfield(this, sf::Vector2f(Game::instance.GetWindow()->GetSize().x / 2, Game::instance.GetWindow()->GetSize().y / 2), 500, 
+               1, "Enter Your Name...", "DefaultStyle", 22, 0, alignment::MIDDLECENTER));
 }
 
 SplashScreen::~SplashScreen()

@@ -6,7 +6,7 @@ class GUIStyle
 private:
   TextStyle m_textStyle;
   ButtonStyle m_buttonStyle;
-  TextboxStyle m_textboxStyle;
+  TextfieldStyle m_textfieldStyle;
 
 public:
   GUIStyle();
@@ -16,6 +16,6 @@ public:
 
   TextStyle GetTextStyle();
   ButtonStyle GetButtonStyle();
-  TextboxStyle GetTextboxStyle();
+  TextfieldStyle GetTextfieldStyle();
 };
 

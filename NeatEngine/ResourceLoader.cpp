@@ -65,8 +65,8 @@ void ResourceLoader::LoadFonts()
   std::vector<std::string> fonts;
 
   // Add fonts here
-  fonts.push_back("fonts/SquaresBold.otf");
-
+  fonts.push_back("fonts/SquaresBold.otf"); 
+  fonts.push_back("fonts/lucon.ttf");
 
   //////////////////
 

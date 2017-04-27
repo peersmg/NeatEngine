@@ -69,13 +69,19 @@ void Scene::UpdateObjects(float deltaTime)
 
 void Scene::DrawObjects()
 {
-  for (int i = 0; i <= m_maxLayer; i++)
+  if (m_active == true)
   {
-    for (GameObject* pObject : m_layerObjects[i])
+    for (int i = 0; i <= m_maxLayer; i++)
     {
-      for (Component* pComponent : pObject->GetComponents())
+      for (GameObject* pObject : m_layerObjects[i])
       {
-        pComponent->Draw();
+        for (Component* pComponent : pObject->GetComponents())
+        {
+          if (pComponent->GetVisible())
+          {
+            pComponent->Draw();
+          }
+        }
       }
     }
   }

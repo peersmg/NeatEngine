@@ -51,13 +51,23 @@ void GUIStyle::LoadAll()
   }
 
   // Textbox Style
-  m_textboxStyle.useImg = false;
-  m_textboxStyle.normalBackgroundCol = sf::Color(100, 100, 100);
-  m_textboxStyle.focusBackgroundCol = sf::Color(100, 100, 100);
-  m_textboxStyle.defaultTextCol = sf::Color(50, 50, 50);
-  m_textboxStyle.normalTextCol = sf::Color::Black;
-  
-  m_textboxStyle;
+  m_textfieldStyle.useImg = false;
+  m_textfieldStyle.backgroundCol = sf::Color(200, 200, 200);
+  m_textfieldStyle.normalOutlineCol = sf::Color(50, 50, 50);
+  m_textfieldStyle.focusOutlineCol = sf::Color(100, 100, 100);
+  m_textfieldStyle.placeholderTextCol = sf::Color(50, 50, 50);
+  m_textfieldStyle.normalTextCol = sf::Color::Black;
+
+  m_textfieldStyle.outlineSize = 2;
+
+  if (ResourceLoader::GetInstance().isFontLoaded("fonts/lucon.ttf"))
+  {
+    m_textfieldStyle.font = ResourceLoader::GetInstance().GetFont("fonts/lucon.ttf");
+  }
+  else
+  {
+    OutputLog::GetInstance().AddLine("Font not loaded", MessageType::ERROR);
+  }
 }
 
 TextStyle GUIStyle::GetTextStyle()
@@ -69,7 +79,7 @@ ButtonStyle GUIStyle::GetButtonStyle()
 {
   return m_buttonStyle;
 }
-TextboxStyle GUIStyle::GetTextboxStyle()
+TextfieldStyle GUIStyle::GetTextfieldStyle()
 {
-  return m_textboxStyle;
+  return m_textfieldStyle;
 }

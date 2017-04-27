@@ -11,7 +11,7 @@ class GameObject
 protected:
   Transform m_transform;                  // The transform of the object
   bool m_active;                          // Is the object active
-  bool m_isPersistent;                      // Should the object exist across scenes
+  bool m_isPersistent;                    // Should the object exist across scenes
   std::vector<Component*> m_components;   // The objects components
   
   int m_layer;                            // The object draw and update layer

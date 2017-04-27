@@ -15,6 +15,8 @@ private:
   sf::Vector2i m_mousePosition;           // Position of the mouse
   static InputManager *m_pInstance;       // Pointer to the InputManager instance
 
+  std::string m_textEntered;
+
 public:
   InputManager();
   ~InputManager();
@@ -55,4 +57,7 @@ public:
 
   // Returns true if the key has just been released
   bool KeyUp(sf::Keyboard::Key Key);
+
+  // Returns entered text
+  std::string GetTextEntered();
 };

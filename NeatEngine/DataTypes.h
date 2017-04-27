@@ -48,16 +48,18 @@ struct ButtonStyle
   sf::Color outlineColor;
 };
 
-struct TextboxStyle
+struct TextfieldStyle
 {
   bool useImg;
 
-  sf::Texture normalBackgroundImg;
-  sf::Texture focusBackgroundImg;
+  sf::Color backgroundCol;
 
-  sf::Color normalBackgroundCol;
-  sf::Color focusBackgroundCol;
+  sf::Font font;
 
-  sf::Color defaultTextCol;
+  int outlineSize;
+  sf::Color normalOutlineCol;
+  sf::Color focusOutlineCol;
+
+  sf::Color placeholderTextCol;
   sf::Color normalTextCol;
 };

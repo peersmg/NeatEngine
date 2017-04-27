@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMyButton.h" />
+    <ClInclude Include="CTextfield.h" />
     <ClInclude Include="DefaultCamera.h" />
     <ClInclude Include="CAudio.h" />
     <ClInclude Include="CCamera.h" />
@@ -20,6 +21,7 @@
     <ClInclude Include="CSprite.h" />
     <ClInclude Include="CText.h" />
     <ClInclude Include="DataTypes.h" />
+    <ClInclude Include="DrawManager.h" />
     <ClInclude Include="GUIStyle.h" />
     <ClInclude Include="icon.h" />
     <ClInclude Include="resource1.h" />
@@ -39,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CMyButton.cpp" />
+    <ClCompile Include="CTextfield.cpp" />
     <ClCompile Include="DefaultCamera.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -67,6 +70,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="DrawManager.cpp" />
     <ClCompile Include="GUIStyle.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>

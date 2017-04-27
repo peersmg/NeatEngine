@@ -1,13 +1,12 @@
--Add visible bool to component, draw not called on non visible components
-
--CGUIElement component superclass (with functions for drawing rects and text) OR redo drawmanager
--Text field component (use font.getLineSpacing)
 -Drop down component
+-Add zoom bool to camera and impliment
+-Add dragable camera (and moveable with WASD)
 
 -Create object factory, component factory?
 -Make resource loader scan folder for Fonts and GUI
 -OutputLog saves to text file
 -Event system for components
+-Finish rect shape component
 -Add circle shape component
 -Add fade to audio component
 -Improve commenting
@@ -15,7 +14,8 @@
 -Saving system
 -Remake pong
 -Create user guide
+-Perlin Noise (with seed)
 
 Big jobs:
--Physics
+-Physics (own implimentation)
 -Networking

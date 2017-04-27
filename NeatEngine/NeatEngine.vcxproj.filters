@@ -108,6 +108,12 @@
     <ClInclude Include="resource1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DrawManager.h">
+      <Filter>Header Files\NeatEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="CTextfield.h">
+      <Filter>Header Files\NeatEngine\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Component.cpp">
@@ -177,6 +183,12 @@
       <Filter>Source Files\NeatEngine</Filter>
     </ClCompile>
     <ClCompile Include="CMyButton.cpp">
+      <Filter>Source Files\NeatEngine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawManager.cpp">
+      <Filter>Source Files\NeatEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="CTextfield.cpp">
       <Filter>Source Files\NeatEngine\Components</Filter>
     </ClCompile>
   </ItemGroup>

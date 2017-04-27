@@ -22,7 +22,9 @@ CRectShape::~CRectShape()
 
 void CRectShape::Update(float deltatime)
 {
+  Transform ownerTransform = m_pOwner->GetTransform();
 
+  m_rectangle.setPosition(ownerTransform.GetPosition());
 }
 
 void CRectShape::Draw()

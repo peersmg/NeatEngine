@@ -24,6 +24,7 @@ void InputManager::SampleKeyboard()
   //ClearKeyStates();
 
   sf::Event currentEvent;
+  m_textEntered = "";
 
   for (auto const &element : m_keyState)
   {
@@ -65,6 +66,15 @@ void InputManager::SampleKeyboard()
     else if (currentEvent.type == sf::Event::Closed)
     {
       Game::instance.SetState(GameState::Exiting);
+    }
+
+    if (currentEvent.type == sf::Event::TextEntered && currentEvent.text.unicode != 8 && currentEvent.text.unicode != 13 && currentEvent.text.unicode != 27)
+    {
+      OutputLog::GetInstance().AddLine(m_textEntered + std::to_string(currentEvent.text.unicode));
+      if (currentEvent.text.unicode < 128)
+      {
+        m_textEntered = m_textEntered + static_cast<char>(currentEvent.text.unicode);
+      }
     }
   }
 
@@ -195,6 +205,11 @@ bool InputManager::KeyUp(sf::Keyboard::Key Key)
   }
 
   return false;
+}
+
+std::string InputManager::GetTextEntered()
+{
+  return m_textEntered;
 }
 
 InputManager* InputManager::GetInstance()
