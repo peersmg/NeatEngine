@@ -2,10 +2,20 @@
 #include "DefaultCamera.h"
 #include "CCamera.h"
 #include "Game.h"
+#include "InputManager.h"
+#include "ObjectFactory.h"
 
-DefaultCamera::DefaultCamera(Window *window)
+GameObject* CreateDefaultCamera(InitialisationData data)
 {
-  AddComponent(new CCamera(this, window->GetSize()));
+  DefaultCamera* pTemp = new DefaultCamera();
+  return (GameObject*)pTemp;
+}
+
+const bool bDefaultCamera = ObjectFactory::GetInstance().Register("DefaultCamera", CreateDefaultCamera);
+
+DefaultCamera::DefaultCamera()
+{
+  AddComponent(new CCamera(this, Game::instance.GetWindow()->GetSize(), sf::FloatRect(0,0,1,1), 0, 1, true));
 }
 
 DefaultCamera::~DefaultCamera()

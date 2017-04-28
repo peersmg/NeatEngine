@@ -105,14 +105,17 @@
     <ClInclude Include="icon.h">
       <Filter>Header Files\NeatEngine</Filter>
     </ClInclude>
-    <ClInclude Include="resource1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DrawManager.h">
       <Filter>Header Files\NeatEngine</Filter>
     </ClInclude>
     <ClInclude Include="CTextfield.h">
       <Filter>Header Files\NeatEngine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFactory.h">
+      <Filter>Header Files\NeatEngine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +193,9 @@
     </ClCompile>
     <ClCompile Include="CTextfield.cpp">
       <Filter>Source Files\NeatEngine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectFactory.cpp">
+      <Filter>Source Files\NeatEngine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

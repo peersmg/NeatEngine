@@ -25,6 +25,7 @@ void InputManager::SampleKeyboard()
 
   sf::Event currentEvent;
   m_textEntered = "";
+  m_mouseWheelDelta = 0;
 
   for (auto const &element : m_keyState)
   {
@@ -68,9 +69,13 @@ void InputManager::SampleKeyboard()
       Game::instance.SetState(GameState::Exiting);
     }
 
+    if (currentEvent.type == sf::Event::MouseWheelMoved)
+    {
+      m_mouseWheelDelta = currentEvent.mouseWheel.delta;
+    }
+
     if (currentEvent.type == sf::Event::TextEntered && currentEvent.text.unicode != 8 && currentEvent.text.unicode != 13 && currentEvent.text.unicode != 27)
     {
-      OutputLog::GetInstance().AddLine(m_textEntered + std::to_string(currentEvent.text.unicode));
       if (currentEvent.text.unicode < 128)
       {
         m_textEntered = m_textEntered + static_cast<char>(currentEvent.text.unicode);
@@ -128,6 +133,11 @@ sf::Vector2i InputManager::GetMousePosition()
   return (sf::Vector2i)Game::instance.GetWindow()->GetRenderWindow()->mapPixelToCoords(pixelPos);
 
   //return pixelPos;
+}
+
+void InputManager::AddAction(std::string action, sf::Keyboard::Key key)
+{
+  m_actionMap[action].push_back(key);
 }
 
 bool InputManager::MouseOver(sf::FloatRect Rect)
@@ -207,9 +217,59 @@ bool InputManager::KeyUp(sf::Keyboard::Key Key)
   return false;
 }
 
+bool InputManager::KeyPressed(std::string action)
+{
+  bool actionMade = false;
+
+  for (sf::Keyboard::Key Key : m_actionMap[action])
+  {
+    if (m_keyState[Key] == ButtonState::PRESSED)
+    {
+      actionMade = true;
+    }
+  }
+
+  return actionMade;
+}
+
+bool InputManager::KeyDown(std::string action)
+{
+  bool actionMade = false;
+
+  for (sf::Keyboard::Key Key : m_actionMap[action])
+  {
+    if (m_keyState[Key] == ButtonState::DOWN)
+    {
+      actionMade = true;
+    }
+  }
+
+  return actionMade;
+}
+
+bool InputManager::KeyUp(std::string action)
+{
+  bool actionMade = false;
+  
+  for (sf::Keyboard::Key Key : m_actionMap[action])
+  {
+    if (m_keyState[Key] == ButtonState::RELEASED)
+    {
+      actionMade = true;
+    }
+  }
+
+  return actionMade;
+}
+
 std::string InputManager::GetTextEntered()
 {
   return m_textEntered;
+}
+
+float InputManager::GetMouseWheelDelta()
+{
+  return m_mouseWheelDelta;
 }
 
 InputManager* InputManager::GetInstance()

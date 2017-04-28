@@ -1,4 +1,7 @@
 #pragma once
+#include <map>
+#include <string>
+#include "Transform.h"
 
 // Alignment enum used for text
 enum class alignment { TOPLEFT, TOPRIGHT, TOPCENTER, MIDDLELEFT, MIDDLERIGHT, MIDDLECENTER, BOTTOMLEFT, BOTTOMRIGHT, BOTTOMCENTER };
@@ -16,6 +19,24 @@ struct OutputInfo
 {
   MessageType type;
   std::string text;
+  std::string time;
+};
+
+struct InitialisationData
+{
+  std::string scene = "";
+  Transform transform;
+  std::map<std::string, std::string> data;
+};
+
+class GameObject;
+
+struct Event
+{
+  GameObject* pSource;
+  std::string type;
+  float data1;
+  float data2;
 };
 
 // GUI

@@ -12,10 +12,12 @@ private:
 
   std::map<sf::Keyboard::Key, ButtonState> m_keyState;
   std::map<sf::Mouse::Button, ButtonState> m_mouseState;
+  std::map<std::string, std::vector<sf::Keyboard::Key>> m_actionMap;
   sf::Vector2i m_mousePosition;           // Position of the mouse
   static InputManager *m_pInstance;       // Pointer to the InputManager instance
 
   std::string m_textEntered;
+  float m_mouseWheelDelta;
 
 public:
   InputManager();
@@ -30,6 +32,8 @@ public:
   void SampleKeyboard();
 
   void ClearKeyStates();
+
+  void AddAction(std::string action, sf::Keyboard::Key key);
 
   // Return a vector of the events
   std::vector<sf::Event> GetEvents();
@@ -52,12 +56,24 @@ public:
   // Returns true if the key has been pressed
   bool KeyPressed(sf::Keyboard::Key Key);
 
+  // Returns true if a key in an action has been pressed
+  bool KeyPressed(std::string action);
+
   // Returns true if the key is being held down
   bool KeyDown(sf::Keyboard::Key Key);
+
+  // Returns true if a key in an action is being held down
+  bool KeyDown(std::string action);
 
   // Returns true if the key has just been released
   bool KeyUp(sf::Keyboard::Key Key);
 
+  // Returns true if a key in an action has just been released
+  bool KeyUp(std::string action);
+
   // Returns entered text
   std::string GetTextEntered();
+
+  // Returns wheel delta
+  float GetMouseWheelDelta();
 };

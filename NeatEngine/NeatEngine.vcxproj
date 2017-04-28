@@ -24,6 +24,7 @@
     <ClInclude Include="DrawManager.h" />
     <ClInclude Include="GUIStyle.h" />
     <ClInclude Include="icon.h" />
+    <ClInclude Include="ObjectFactory.h" />
     <ClInclude Include="resource1.h" />
     <ClInclude Include="ResourceLoader.h" />
     <ClInclude Include="SDefault.h" />
@@ -75,6 +76,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ObjectFactory.cpp" />
     <ClCompile Include="ResourceLoader.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>

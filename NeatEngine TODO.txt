@@ -1,21 +1,24 @@
--Drop down component
--Add zoom bool to camera and impliment
--Add dragable camera (and moveable with WASD)
-
--Create object factory, component factory?
--Make resource loader scan folder for Fonts and GUI
--OutputLog saves to text file
--Event system for components
+-Drop down component (similar to PUBG options dropdown (no triangle arrow thing))
 -Finish rect shape component
+
 -Add circle shape component
 -Add fade to audio component
 -Improve commenting
+
 -Particle Effects
+
 -Saving system
+
 -Remake pong
+
 -Create user guide
+
+-Add dragable camera (and moveable with WASD) 
+
 -Perlin Noise (with seed)
 
+-Shaders
+
 Big jobs:
--Physics (own implimentation)
--Networking
+-Networking (peer to peer, work on small game with multiplayer)
+-Physics (own implimentation, wait untill I have an idea for a game using physics)

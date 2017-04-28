@@ -10,7 +10,6 @@ SceneManager::SceneManager()
   AddScene("PersistentScene", new Scene());
 }
 
-
 SceneManager::~SceneManager()
 {
 }

@@ -6,10 +6,9 @@
 #include "SSplash.h"
 #include "SDefault.h"
 #include "ResourceLoader.h"
-#include "DefaultCamera.h"
 #include "OutputLog.h"
 #include "Component.h"
-
+#include "ObjectFactory.h"
 #include "icon.h"
 
 Game::Game()
@@ -45,13 +44,11 @@ void Game::Start()
   m_SceneManager.AddScene("SplashScreen", new SSplash());
 
   m_SceneManager.AddScene("DefaultScene", new SDefault());
-  m_SceneManager.AddScene("DefaultScene", new SDefault());
 
   OutputLog::GetInstance().AddLine("Starting...", MessageType::MESSAGE);
 
-  DefaultCamera* defaultCamera = new DefaultCamera(m_mainWindow);
+  GameObject* defaultCamera = ObjectFactory::GetInstance().Spawn("DefaultCamera");
 
-  m_SceneManager.AddObject(defaultCamera);
   m_mainWindow->AddCamera(defaultCamera);
 
   // Set the initial scene

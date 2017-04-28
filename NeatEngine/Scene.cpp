@@ -87,6 +87,20 @@ void Scene::DrawObjects()
   }
 }
 
+void Scene::SendEvent(Event evt)
+{
+  for (int i = 0; i <= m_maxLayer; i++)
+  {
+    for (GameObject* pObject : m_layerObjects[i])
+    {
+      if (pObject->GetActive())
+      {
+        pObject->HandleEvent(evt);
+      }
+    }
+  }
+}
+
 void Scene::UnloadScene()
 {
   for (int i = 0; i <= m_maxLayer; i++)

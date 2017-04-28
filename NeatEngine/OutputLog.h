@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 #include "Window.h"
-
+#include <fstream>
 
 class OutputLog
 {
@@ -15,6 +15,11 @@ private:
   std::vector<OutputInfo> m_errorLog;
   sf::Font m_font;
   bool m_showMessages;
+  sf::Clock m_clock;
+
+  std::ofstream m_logFile;
+
+  float m_textHeight;
 public:
   static OutputLog& GetInstance()
   {
@@ -35,4 +40,6 @@ public:
   void ShowMessages(bool showMessages);
 
   void PrintLog(std::vector<OutputInfo> &log);
+
+  sf::String GetFormatTime();
 };

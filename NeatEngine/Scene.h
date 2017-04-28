@@ -27,4 +27,6 @@ public:
   void DrawObjects();
 
   void DeleteInactiveObjects();
+
+  void SendEvent(Event evt);
 };

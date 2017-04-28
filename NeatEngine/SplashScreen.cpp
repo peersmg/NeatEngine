@@ -3,12 +3,21 @@
 #include "SplashScreen.h"
 #include "InputManager.h"
 #include "OutputLog.h"
+#include "ObjectFactory.h"
 
 #include "CText.h"
 #include "CMyButton.h"
 #include "CRectShape.h"
 #include "CAudio.h"
 #include "CTextfield.h"
+
+GameObject* CreateSplashScreen(InitialisationData data)
+{
+  SplashScreen* pTemp = new SplashScreen();
+  return (GameObject*)pTemp;
+}
+
+const bool bSplashScreen = ObjectFactory::GetInstance().Register("SplashScreen", CreateSplashScreen);
 
 SplashScreen::SplashScreen()
 {
@@ -35,14 +44,14 @@ SplashScreen::~SplashScreen()
 
 void SplashScreen::Update(float deltaTime)
 {
-
+  
 }
 
 void SplashScreen::ButtonPressed(std::string buttonId)
 {
   OutputLog::GetInstance().AddLine("Button Pressed", MessageType::MESSAGE);
 
-  m_buttonSound->Play();
+  //m_buttonSound->Play();
 
-  Game::instance.m_SceneManager.SetScene("DefaultScene");
+  //Game::instance.m_SceneManager.SetScene("DefaultScene");
 }

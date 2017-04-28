@@ -38,6 +38,8 @@ public:
 
   virtual void ButtonPressed(std::string buttonId) {    };
 
+  virtual void HandleEvent(Event evt) {   };
+
   void SetActive(bool active);
   bool GetActive();
 

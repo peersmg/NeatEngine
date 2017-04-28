@@ -7,7 +7,7 @@ class DefaultCamera : public GameObject
 {
 
 public:
-  DefaultCamera(Window *window);
+  DefaultCamera();
   ~DefaultCamera();
 };
 
