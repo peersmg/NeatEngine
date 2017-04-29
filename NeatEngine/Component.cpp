@@ -21,3 +21,13 @@ bool Component::GetVisible()
 {
   return m_visible;
 }
+
+void Component::SetDormant(bool dormant)
+{
+  m_dormant = dormant;
+}
+
+bool Component::GetDormant()
+{
+  return m_dormant;
+}

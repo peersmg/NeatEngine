@@ -71,8 +71,6 @@ struct ButtonStyle
 
 struct TextfieldStyle
 {
-  bool useImg;
-
   sf::Color backgroundCol;
 
   sf::Font font;
@@ -83,4 +81,18 @@ struct TextfieldStyle
 
   sf::Color placeholderTextCol;
   sf::Color normalTextCol;
+};
+
+struct DropdownStyle
+{
+  sf::Color backgroundCol;
+  sf::Color hoverCol;
+  sf::Color selectedCol;
+
+  sf::Font font;
+
+  int outlineSize;
+  sf::Color outlineCol;
+
+  sf::Color textCol;
 };

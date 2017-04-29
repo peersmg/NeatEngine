@@ -39,7 +39,10 @@ void Scene::UpdateObjects(float deltaTime)
         {
           for (Component* pComponent : pObject->GetComponents())
           {
-            pComponent->Update(deltaTime);
+            if (!pComponent->GetDormant())
+            {
+              pComponent->Update(deltaTime);
+            }
           }
 
           pObject->Update(deltaTime);
@@ -77,7 +80,7 @@ void Scene::DrawObjects()
       {
         for (Component* pComponent : pObject->GetComponents())
         {
-          if (pComponent->GetVisible())
+          if (pComponent->GetVisible() && !pComponent->GetDormant())
           {
             pComponent->Draw();
           }

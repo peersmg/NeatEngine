@@ -11,7 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CDropdown.h" />
     <ClInclude Include="CMyButton.h" />
+    <ClInclude Include="CDefaultParticleEmitter.h" />
     <ClInclude Include="CTextfield.h" />
     <ClInclude Include="DefaultCamera.h" />
     <ClInclude Include="CAudio.h" />
@@ -25,6 +27,7 @@
     <ClInclude Include="GUIStyle.h" />
     <ClInclude Include="icon.h" />
     <ClInclude Include="ObjectFactory.h" />
+    <ClInclude Include="Particle.h" />
     <ClInclude Include="resource1.h" />
     <ClInclude Include="ResourceLoader.h" />
     <ClInclude Include="SDefault.h" />
@@ -41,7 +44,9 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CDropdown.cpp" />
     <ClCompile Include="CMyButton.cpp" />
+    <ClCompile Include="CDefaultParticleEmitter.cpp" />
     <ClCompile Include="CTextfield.cpp" />
     <ClCompile Include="DefaultCamera.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -77,6 +82,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="ObjectFactory.cpp" />
+    <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ResourceLoader.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>

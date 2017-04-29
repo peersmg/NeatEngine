@@ -24,9 +24,9 @@ private:
   float m_caratBlinkSpeed;
   float m_backspaceTimer;
 
-  sf::Vector2f m_caratVectorPosition;
-  int m_caratCharacterPosition;
-  int m_caratLine;
+  sf::Vector2f m_caretVectorPosition;
+  int m_caretCharacterPosition;
+  int m_caretLine;
 
 public:
   CTextfield(GameObject* pOwner, sf::Vector2f position, int width, int lines, std::string defaultText, std::string style, int fontSize = 12, int charLimit = 0, 

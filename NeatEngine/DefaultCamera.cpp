@@ -15,7 +15,7 @@ const bool bDefaultCamera = ObjectFactory::GetInstance().Register("DefaultCamera
 
 DefaultCamera::DefaultCamera()
 {
-  AddComponent(new CCamera(this, Game::instance.GetWindow()->GetSize(), sf::FloatRect(0,0,1,1), 0, 1, true));
+  AddComponent(new CCamera(this, Game::instance.GetWindow()->GetSize()));
 }
 
 DefaultCamera::~DefaultCamera()

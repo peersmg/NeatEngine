@@ -5,7 +5,7 @@
 class InputManager
 {
 private:
-  enum class ButtonState{ NONE, PRESSED, DOWN, RELEASED };
+  enum class ButtonState{ NONE, PRESSED, DOWN, RELEASED, CLICKED};
 
   std::vector<sf::Event> m_events;        // Vector of current events
   std::vector<sf::Event> m_prevEvents;    // Vector of events from previous check
@@ -18,6 +18,10 @@ private:
 
   std::string m_textEntered;
   float m_mouseWheelDelta;
+
+  sf::Mouse::Button m_clickButton;
+  float m_clickTime;
+  float m_maxClickTime;
 
 public:
   InputManager();
@@ -52,6 +56,9 @@ public:
 
   // Returns true if the mouse button is down
   bool ButtonReleased(sf::Mouse::Button button);
+
+  // Returns true if the mouse button has been pressed
+  bool ButtonClicked(sf::Mouse::Button button);
 
   // Returns true if the key has been pressed
   bool KeyPressed(sf::Keyboard::Key Key);

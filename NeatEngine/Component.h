@@ -6,9 +6,10 @@ class GameObject;
 class Component
 {
 protected:
-  GameObject* m_pOwner;   // Object that this component belongs too
-  bool m_visible;                         // Is the component visible
-  
+  GameObject* m_pOwner;         // Object that this component belongs too
+  bool m_visible;               // Is the component visible
+  bool m_dormant;               // Should the component be updated or drawn
+
 public:
 
   /**
@@ -46,4 +47,18 @@ public:
   * @return If the component is visible
   */
   bool GetVisible();
+
+  /**
+  * Set if the component is dormant.
+  *
+  * @param dormant - Should the component be dormant.
+  */
+  void SetDormant(bool dormant);
+
+  /**
+  * Get if the component is dormant or not.
+  *
+  * @return If the component is dormant
+  */
+  bool GetDormant();
 };

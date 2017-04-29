@@ -29,8 +29,8 @@ void ResourceLoader::LoadTextures()
   std::vector<std::string> textures;
 
   // Add images here
-  textures.push_back("resources/Splashscreen.png");
-
+  textures.push_back("resources/textures/Splashscreen.png");
+  textures.push_back("resources/particles/circle.png");
 
   //////////////////
 
@@ -65,8 +65,9 @@ void ResourceLoader::LoadFonts()
   std::vector<std::string> fonts;
 
   // Add fonts here
-  fonts.push_back("fonts/SquaresBold.otf"); 
-  fonts.push_back("fonts/lucon.ttf");
+  fonts.push_back("resources/fonts/SquaresBold.otf"); 
+  fonts.push_back("resources/fonts/lucon.ttf"); 
+  fonts.push_back("resources/fonts/GOTHIC.TTF");
 
   //////////////////
 

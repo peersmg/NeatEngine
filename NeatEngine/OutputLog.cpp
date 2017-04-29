@@ -11,9 +11,10 @@
 OutputLog::OutputLog()
 {
   m_window = nullptr;
-  m_font.loadFromFile("fonts/lucon.ttf");
+  m_font.loadFromFile("resources/fonts/lucon.ttf");
 
   m_showMessages = true;
+  m_fps = int(1.0f / m_fpsClock.restart().asSeconds());
 }
 
 OutputLog::~OutputLog()
@@ -39,6 +40,8 @@ void OutputLog::AddLine(std::string text, MessageType type)
 {
 #ifndef NDEBUG
     OutputInfo info;
+
+    text.erase(std::remove(text.begin(), text.end(), '\n'), text.end());
 
     info.time = GetFormatTime();
     info.text = text;
@@ -95,6 +98,13 @@ void OutputLog::Draw()
       PrintLog(m_errorLog);
     }
 
+    m_fps = ((1.0f / m_fpsClock.restart().asSeconds()) + m_fps) / 2;
+
+    sf::Text text = sf::Text("FPS: " + std::to_string((int)m_fps), m_font, 22);
+    sf::Vector2f position = sf::Vector2f(m_window->GetSize().x - 100 * 2, 0);
+    text.setPosition(DrawManager::GetInstance().AlignPosition(sf::FloatRect(position, sf::Vector2f(text.getGlobalBounds().width, text.getGlobalBounds().height)), alignment::TOPLEFT));
+
+    m_window->Draw(text);
     m_window->Display();
   }
   
@@ -102,6 +112,8 @@ void OutputLog::Draw()
 
 void OutputLog::PrintLog(std::vector<OutputInfo> &log)
 {
+
+  
   for (int i = 0; i < log.size(); i++)
   {
     int num = log.size() - i - 1;

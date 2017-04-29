@@ -7,6 +7,7 @@ private:
   TextStyle m_textStyle;
   ButtonStyle m_buttonStyle;
   TextfieldStyle m_textfieldStyle;
+  DropdownStyle m_dropdownStyle;
 
 public:
   GUIStyle();
@@ -17,5 +18,6 @@ public:
   TextStyle GetTextStyle();
   ButtonStyle GetButtonStyle();
   TextfieldStyle GetTextfieldStyle();
+  DropdownStyle GetDropdownStyle();
 };
 

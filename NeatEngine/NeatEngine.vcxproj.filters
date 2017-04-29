@@ -117,6 +117,15 @@
     <ClInclude Include="ObjectFactory.h">
       <Filter>Header Files\NeatEngine</Filter>
     </ClInclude>
+    <ClInclude Include="CDropdown.h">
+      <Filter>Header Files\NeatEngine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CDefaultParticleEmitter.h">
+      <Filter>Header Files\NeatEngine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Component.cpp">
@@ -196,6 +205,15 @@
     </ClCompile>
     <ClCompile Include="ObjectFactory.cpp">
       <Filter>Source Files\NeatEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="CDropdown.cpp">
+      <Filter>Source Files\NeatEngine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="CDefaultParticleEmitter.cpp">
+      <Filter>Source Files\NeatEngine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

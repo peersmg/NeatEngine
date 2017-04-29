@@ -1,23 +1,12 @@
--Drop down component (similar to PUBG options dropdown (no triangle arrow thing))
--Finish rect shape component
-
--Add circle shape component
--Add fade to audio component
--Improve commenting
-
--Particle Effects
-
--Saving system
-
--Remake pong
-
--Create user guide
-
--Add dragable camera (and moveable with WASD) 
-
--Perlin Noise (with seed)
+-Move font to resources folder (create new one for shaders)
 
 -Shaders
+-Perlin Noise Generator (with seed)
+-Create user guide
+
+-Dragable camera (INDIVIDUAL GAME)
+-Saving system (INDIVIDUAL GAME)
+-Multithreading (INDIVIDUAL GAME)
 
 Big jobs:
 -Networking (peer to peer, work on small game with multiplayer)

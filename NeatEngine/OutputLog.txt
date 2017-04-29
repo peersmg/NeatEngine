@@ -1,6 +1,16 @@
 [00:00:00]	Message: Loading default style....
-[00:00:00]	ERROR: Scene "DefaultScene" has already been added!
 [00:00:00]	Message: Starting...
 [00:00:00]	Message: Loading scene...
-[00:00:00]	Message: Audio "resources/Pickup_Coin.wav" loaded.
-[00:00:16]	Message: Button Pressed
+[00:00:00]	Message: Audio "resources/sounds/Pickup_Coin.wav" loaded.
+[00:00:07]	Message: Name:   Setting: 1
+[00:00:08]	Message: Emitter Added!
+[00:00:34]	Message: Emitter Added!
+[00:00:35]	Message: Emitter Added!
+[00:00:40]	Message: Emitter Added!
+[00:00:47]	Message: Emitter Added!
+[00:00:51]	Message: Emitter Added!
+[00:00:53]	Message: Emitter Added!
+[00:00:57]	Message: Emitter Added!
+[00:01:02]	Message: Emitter Added!
+[00:01:03]	Message: Emitter Added!
+[00:02:22]	Message: Emitter Added!

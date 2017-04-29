@@ -6,6 +6,8 @@
 InputManager::InputManager()
 {
   ClearKeyStates();
+
+  m_maxClickTime = 0.5f;
 }
 
 
@@ -27,6 +29,11 @@ void InputManager::SampleKeyboard()
   m_textEntered = "";
   m_mouseWheelDelta = 0;
 
+  if (m_clickTime > 0)
+  {
+    m_clickTime -= 0.016;
+  }
+
   for (auto const &element : m_keyState)
   {
     if (element.second == ButtonState::PRESSED)
@@ -41,6 +48,11 @@ void InputManager::SampleKeyboard()
     {
       m_mouseState[element.first] = ButtonState::DOWN;
     }
+  }
+
+  if (m_mouseState[m_clickButton] == ButtonState::CLICKED)
+  {
+    m_mouseState[m_clickButton] = ButtonState::RELEASED;
   }
 
   // Set key events
@@ -59,10 +71,18 @@ void InputManager::SampleKeyboard()
     else if (currentEvent.type == sf::Event::MouseButtonPressed)
     {
       m_mouseState[currentEvent.mouseButton.button] = ButtonState::PRESSED;
+      m_clickButton = currentEvent.mouseButton.button;
+      m_clickTime = m_maxClickTime;
     }
     else if (currentEvent.type == sf::Event::MouseButtonReleased)
     {
       m_mouseState[currentEvent.mouseButton.button] = ButtonState::RELEASED;
+
+      if (currentEvent.mouseButton.button == m_clickButton && m_clickTime > 0)
+      {
+        m_mouseState[currentEvent.mouseButton.button] = ButtonState::CLICKED;
+        m_clickTime = 0;
+      }
     }
     else if (currentEvent.type == sf::Event::Closed)
     {
@@ -178,6 +198,16 @@ bool InputManager::ButtonDown(sf::Mouse::Button button)
 bool InputManager::ButtonReleased(sf::Mouse::Button button)
 {
   if (m_mouseState[button] == ButtonState::RELEASED)
+  {
+    return true;
+  }
+
+  return false;
+}
+
+bool InputManager::ButtonClicked(sf::Mouse::Button button)
+{
+  if (m_mouseState[button] == ButtonState::CLICKED)
   {
     return true;
   }

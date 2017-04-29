@@ -16,6 +16,8 @@ private:
   sf::Font m_font;
   bool m_showMessages;
   sf::Clock m_clock;
+  sf::Clock m_fpsClock;
+  float m_fps;
 
   std::ofstream m_logFile;
 

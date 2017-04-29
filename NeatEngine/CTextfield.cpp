@@ -35,7 +35,7 @@ CTextfield::CTextfield(GameObject* pOwner, sf::Vector2f position, int width, int
   m_caratBlinkSpeed = 1.6;
   m_prevLinesCount = 0;
 
-  m_caratCharacterPosition = m_text.size();
+  m_caretCharacterPosition = m_text.size();
 }
 
 
@@ -102,13 +102,14 @@ void CTextfield::Draw()
     // Draw m_text with blinking carat at endn(or clicked point)
     DrawManager::GetInstance().DrawText(m_text, sf::Vector2f(m_rect.left, m_rect.top), m_fontSize, m_style.font, m_style.placeholderTextCol);
     
-    sf::Text theText = sf::Text(m_text.substr(m_prevLinesCount, m_caratCharacterPosition), m_style.font, m_fontSize);
+    sf::Text theText = sf::Text(m_text.substr(m_prevLinesCount, m_caretCharacterPosition), m_style.font, m_fontSize);
+    sf::Text caretText = sf::Text(" | ", m_style.font, m_fontSize);
 
-    m_caratVectorPosition = sf::Vector2f(m_rect.left + theText.getGlobalBounds().width - (m_style.font.getGlyph(65, m_fontSize, false).bounds.width / 2), m_rect.top + (m_style.font.getLineSpacing(m_fontSize)*m_lines));
+    m_caretVectorPosition = sf::Vector2f(m_rect.left + theText.getGlobalBounds().width - (caretText.getGlobalBounds().width/7), m_rect.top + (m_style.font.getLineSpacing(m_fontSize)*m_lines));
 
     if (m_caratBlinkSpeed <= 0.53)
     {
-      DrawManager::GetInstance().DrawText("|", m_caratVectorPosition, m_fontSize, m_style.font, sf::Color(100, 100, 100));
+      DrawManager::GetInstance().DrawText("|", m_caretVectorPosition, m_fontSize, m_style.font, sf::Color(100, 100, 100));
     }
   }
 }
@@ -152,7 +153,7 @@ void CTextfield::CheckTextInput()
       if (theText.getGlobalBounds().width < m_rect.width)
       {
         m_text = m_text + InputManager::GetInstance()->GetTextEntered();
-        m_caratCharacterPosition = m_caratCharacterPosition + 1;
+        m_caretCharacterPosition = m_caretCharacterPosition + 1;
 
         if (InputManager::GetInstance()->GetTextEntered() != "")
         {
@@ -167,7 +168,7 @@ void CTextfield::CheckTextInput()
         m_text = m_text + "\n";
 
         m_text = m_text + InputManager::GetInstance()->GetTextEntered();
-        m_caratCharacterPosition = 1;
+        m_caretCharacterPosition = 1;
 
         if (InputManager::GetInstance()->GetTextEntered() != "")
         {
@@ -183,7 +184,7 @@ void CTextfield::CheckTextInput()
     if (theText.getGlobalBounds().width < m_rect.width)
     {
       m_text = m_text + InputManager::GetInstance()->GetTextEntered();
-      m_caratCharacterPosition = m_caratCharacterPosition + 1;
+      m_caretCharacterPosition = m_caretCharacterPosition + 1;
 
       if (InputManager::GetInstance()->GetTextEntered() != "")
       {
@@ -198,7 +199,7 @@ void CTextfield::CheckTextInput()
       m_text = m_text + "\n";
 
       m_text = m_text + InputManager::GetInstance()->GetTextEntered();
-      m_caratCharacterPosition = 1;
+      m_caretCharacterPosition = 1;
 
       if (InputManager::GetInstance()->GetTextEntered() != "")
       {
